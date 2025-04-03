@@ -4,6 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class ProfileAndIntro extends StatelessWidget {
   const ProfileAndIntro({super.key});
+
   void _launchURL() async {
     final Uri url = Uri.parse(
         "https://drive.google.com/file/d/1WE6A_nVd9eC0ugx_WczjxXEluEkvzjT5/view?usp=drive_link");

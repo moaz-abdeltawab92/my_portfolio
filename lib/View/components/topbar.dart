@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_website/Responsive/responsive.dart';
 import 'package:portfolio_website/Utils/colors.dart';
 
@@ -35,9 +36,9 @@ class TopBar extends StatelessWidget {
                 duration: Duration(milliseconds: scrollDuration),
                 curve: Curves.bounceIn);
           },
-          child: const Text(
+          child: Text(
             "About Me",
-            style: TextStyle(
+            style: GoogleFonts.nunito(
               fontSize: 22,
               color: textColor,
               fontWeight: FontWeight.bold,
@@ -55,9 +56,9 @@ class TopBar extends StatelessWidget {
                 duration: Duration(milliseconds: scrollDuration),
                 curve: Curves.bounceIn);
           },
-          child: const Text(
+          child: Text(
             "Skills",
-            style: TextStyle(
+            style: GoogleFonts.nunito(
               fontSize: 22,
               color: textColor,
               fontWeight: FontWeight.bold,
@@ -75,9 +76,9 @@ class TopBar extends StatelessWidget {
                 duration: Duration(milliseconds: scrollDuration),
                 curve: Curves.bounceIn);
           },
-          child: const Text(
+          child: Text(
             "Projects",
-            style: TextStyle(
+            style: GoogleFonts.nunito(
               fontSize: 22,
               color: textColor,
               fontWeight: FontWeight.bold,
@@ -95,9 +96,9 @@ class TopBar extends StatelessWidget {
                 duration: Duration(milliseconds: scrollDuration),
                 curve: Curves.bounceIn);
           },
-          child: const Text(
+          child: Text(
             "Contact Me",
-            style: TextStyle(
+            style: GoogleFonts.nunito(
               fontSize: 22,
               color: textColor,
               fontWeight: FontWeight.bold,

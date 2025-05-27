@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_website/Responsive/responsive.dart';
 import 'package:portfolio_website/models/project_model.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -10,9 +11,9 @@ class RecentProject extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Text(
+        Text(
           "Some of My Recent Projects",
-          style: TextStyle(
+          style: GoogleFonts.poppins(
             fontSize: 25,
             fontWeight: FontWeight.bold,
           ),
@@ -21,22 +22,27 @@ class RecentProject extends StatelessWidget {
         Wrap(
           children: [
             ProjectCard(
+              buttonText: "Download now",
               projectModel: projects[0],
               url: "https://tazkira.netlify.app/",
             ),
             ProjectCard(
+              buttonText: "Check it out",
               projectModel: projects[1],
               url: "https://github.com/moaz-abdeltawab92/Doctor-Hunt-App",
             ),
             ProjectCard(
+              buttonText: "Check it out",
               projectModel: projects[2],
               url: "https://github.com/moaz-abdeltawab92/News-App",
             ),
             ProjectCard(
+              buttonText: "Check it out",
               projectModel: projects[3],
               url: "https://github.com/moaz-abdeltawab92/Notes-App",
             ),
             ProjectCard(
+              buttonText: "Check it out",
               projectModel: projects[4],
               url: "https://github.com/moaz-abdeltawab92/bookly_app.git",
             ),
@@ -50,7 +56,12 @@ class RecentProject extends StatelessWidget {
 class ProjectCard extends StatelessWidget {
   final ProjectModel projectModel;
   final String url;
-  const ProjectCard({super.key, required this.projectModel, required this.url});
+  final String buttonText;
+  const ProjectCard(
+      {super.key,
+      required this.projectModel,
+      required this.url,
+      required this.buttonText});
 
   @override
   Widget build(BuildContext context) {
@@ -104,9 +115,12 @@ class ProjectCard extends StatelessWidget {
                       Uri.parse(url),
                     );
                   },
-                  child: const Text(
-                    "Check It Out",
-                    style: TextStyle(fontSize: 17),
+                  child: Text(
+                    buttonText,
+                    style: const TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
               ),

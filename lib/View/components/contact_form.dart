@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_website/Responsive/responsive.dart';
 import 'package:portfolio_website/Utils/colors.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -25,9 +26,9 @@ class _ContactFormState extends State<ContactForm> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Text(
+        Text(
           "Get In Touch With Me",
-          style: TextStyle(
+          style: GoogleFonts.poppins(
             fontSize: 25,
             fontWeight: FontWeight.w800,
           ),
@@ -54,7 +55,7 @@ class _ContactFormState extends State<ContactForm> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                 const Text(
+                  const Text(
                     "Full Name",
                     style: const TextStyle(
                       fontSize: 18,
@@ -80,8 +81,7 @@ class _ContactFormState extends State<ContactForm> {
                     ),
                   ),
                   const SizedBox(height: 20),
-
-              const    Text(
+                  const Text(
                     "Message",
                     style: const TextStyle(
                       fontSize: 18,
@@ -108,7 +108,6 @@ class _ContactFormState extends State<ContactForm> {
                     ),
                   ),
                   const SizedBox(height: 20),
-
                   Row(
                     children: [
                       Expanded(
@@ -133,20 +132,25 @@ class _ContactFormState extends State<ContactForm> {
                               return;
                             }
 
-                            final whatsappMessage = 'Hello, my name is $name and I wanted to say:\n$message';
-                            final encodedMessage = Uri.encodeComponent(whatsappMessage);
-                            final whatsappUrl = Uri.parse('https://wa.me/201017645365?text=$encodedMessage');
+                            final whatsappMessage =
+                                'Hello, my name is $name and I wanted to say:\n$message';
+                            final encodedMessage =
+                                Uri.encodeComponent(whatsappMessage);
+                            final whatsappUrl = Uri.parse(
+                                'https://wa.me/201017645365?text=$encodedMessage');
 
                             if (await canLaunchUrl(whatsappUrl)) {
-                              await launchUrl(whatsappUrl, mode: LaunchMode.externalApplication);
-                              
+                              await launchUrl(whatsappUrl,
+                                  mode: LaunchMode.externalApplication);
+
                               _nameController.clear();
                               _messageController.clear();
 
                               if (context.mounted) {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
-                                    content: Text('Message sent successfully via WhatsApp.'),
+                                    content: Text(
+                                        'Message sent successfully via WhatsApp.'),
                                     backgroundColor: Colors.green,
                                     duration: Duration(seconds: 2),
                                     behavior: SnackBarBehavior.floating,

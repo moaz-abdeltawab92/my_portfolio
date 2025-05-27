@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_website/Responsive/responsive.dart';
 import 'package:portfolio_website/Utils/colors.dart';
 import 'package:portfolio_website/View/Components/about_me.dart';
@@ -22,9 +23,9 @@ class DeveloperPortFolio extends StatelessWidget {
       backgroundColor: const Color(0XFFECEBDE),
       appBar: AppBar(
         centerTitle: false,
-        title: const Text(
+        title: Text(
           "Portfolio",
-          style: TextStyle(
+          style: GoogleFonts.nunito(
             fontSize: 26,
             fontWeight: FontWeight.bold,
             color: textColor,

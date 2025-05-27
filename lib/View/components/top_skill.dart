@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_website/Responsive/responsive.dart';
 import 'package:portfolio_website/Utils/colors.dart';
 
@@ -9,9 +10,9 @@ class TopSkills extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Text(
+        Text(
           "My Top Skills",
-          style: TextStyle(
+          style: GoogleFonts.poppins(
             fontSize: 25,
             fontWeight: FontWeight.bold,
           ),

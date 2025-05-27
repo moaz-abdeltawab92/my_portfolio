@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_website/Responsive/responsive.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -7,7 +8,7 @@ class ProfileAndIntro extends StatelessWidget {
 
   void _launchURL() async {
     final Uri url = Uri.parse(
-        "https://drive.google.com/file/d/1WE6A_nVd9eC0ugx_WczjxXEluEkvzjT5/view?usp=drive_link");
+        "https://drive.google.com/file/d/1ObnKjPl8MYVqUQ7OM7lx4mdjEwDACH-J/view?usp=drive_link");
     if (await canLaunchUrl(url)) {
       await launchUrl(url, mode: LaunchMode.externalApplication);
     } else {
@@ -66,11 +67,11 @@ class ProfileAndIntro extends StatelessWidget {
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
-                              const Text(
+                              Text(
                                 "I'm Moaz Ayman,\na Passionate Mobile App Developer,\nSpecializing in Flutter App Development.",
-                                style: TextStyle(
+                                style: GoogleFonts.cairo(
                                   fontSize: 20,
-                                  fontWeight: FontWeight.w500,
+                                  fontWeight: FontWeight.w600,
                                 ),
                               ),
                               const SizedBox(height: 20),

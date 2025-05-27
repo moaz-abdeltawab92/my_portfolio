@@ -104,16 +104,46 @@ class ProfileAndIntro extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 20),
-                  child: SizedBox(
+                  child: Container(
                     width: Responsive.isMobile(context)
                         ? Responsive.widthOfScreen(context) * 0.8
                         : Responsive.widthOfScreen(context) / 3,
                     height: Responsive.isMobile(context)
-                        ? Responsive.heightOfScreen(context) / 4
-                        : Responsive.heightOfScreen(context) - 170,
-                    child: Image.asset(
-                      "asset/images/me.jpg",
-                      fit: BoxFit.contain,
+                        ? Responsive.widthOfScreen(context) * 0.8
+                        : Responsive.widthOfScreen(context) / 3,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      gradient: const LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          Color(0xffAF8F6F),
+                          Color(0xffC1BAA1),
+                        ],
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: const Color(0xffAF8F6F).withOpacity(0.3),
+                          blurRadius: 15,
+                          spreadRadius: 2,
+                        ),
+                      ],
+                    ),
+                    padding: const EdgeInsets.all(3),
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white,
+                      ),
+                      padding: const EdgeInsets.all(3),
+                      child: ClipOval(
+                        child: Image.asset(
+                          "asset/images/aa.jpg",
+                          fit: BoxFit.contain,
+                          width: double.infinity,
+                          height: double.infinity,
+                        ),
+                      ),
                     ),
                   ),
                 ),

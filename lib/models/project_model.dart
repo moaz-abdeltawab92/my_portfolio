@@ -37,8 +37,8 @@ List<ProjectModel> projects = [
   ),
   ProjectModel(
     description:
-        "Toku App is an engaging and interactive way to learn Japanese, covering essential topics like numbers, colors, family terms, and common phrases. With built-in audio pronunciations, users can enhance their listening skills and perfect their pronunciation effortlessly. Designed for a fun and immersive learning experience, the app helps learners grasp new words with ease.",
-    imgURL: 'asset/images/toku.png',
-    projectName: 'Toku App',
+        "Bookly App offers a collection of free books with the ability to preview their content. Easily search and find the book you’re looking for in seconds.",
+    imgURL: 'asset/images/book.png',
+    projectName: 'Bookly App',
   ),
 ];

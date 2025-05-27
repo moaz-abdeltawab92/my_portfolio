@@ -38,7 +38,7 @@ class RecentProject extends StatelessWidget {
             ),
             ProjectCard(
               projectModel: projects[4],
-              url: "https://github.com/moaz-abdeltawab92/Toku_app",
+              url: "https://github.com/moaz-abdeltawab92/bookly_app.git",
             ),
           ],
         )

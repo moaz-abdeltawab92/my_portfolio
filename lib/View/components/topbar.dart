@@ -24,7 +24,7 @@ class TopBar extends StatelessWidget {
       {bool isMobile = false}) {
     int scrollDuration = isMobile ? 800 : 500;
     // the main operation is to scroll when we click on any items in topbar
-    // we have perform this operation later
+   
     return [
       Padding(
         padding:

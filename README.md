@@ -21,12 +21,6 @@ Check out the live version here: [Live Demo](https://poortfoliowebsite.netlify.a
 
 ##  Getting Started
 
-### Prerequisites
-
-- Flutter SDK (version 3.4.4 or higher)
-- Dart SDK
-- Git
-
 ### Installation
 
 1. Clone the repository:

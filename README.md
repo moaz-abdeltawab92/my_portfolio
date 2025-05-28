@@ -109,7 +109,9 @@ To deploy your Flutter web project to Netlify:
 
 1. Build your project:
    in Terminal add this line:
+
    flutter build web
+
 Upload the contents of the build/web folder to Netlify or Connecting your GitHub repository directly to Netlify for automatic deployment.
 
 

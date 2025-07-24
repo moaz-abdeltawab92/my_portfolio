@@ -24,7 +24,8 @@ class RecentProject extends StatelessWidget {
             ProjectCard(
               buttonText: "Download now",
               projectModel: projects[0],
-              url: "https://tazkira.netlify.app/",
+              url:
+                  "https://play.google.com/store/apps/details?id=com.moaz.tazkira",
             ),
             ProjectCard(
               buttonText: "Check it out",
@@ -46,6 +47,21 @@ class RecentProject extends StatelessWidget {
               projectModel: projects[4],
               url: "https://github.com/moaz-abdeltawab92/bookly_app.git",
             ),
+            ProjectCard(
+              buttonText: "Check it out",
+              projectModel: projects[5],
+              url: "https://github.com/OmarKhaled2092001/Habit-Tracker-App.git",
+            ),
+            ProjectCard(
+              buttonText: "See more details",
+              projectModel: projects[6],
+              url: "https://pandapos.netlify.app/",
+            ),
+            ProjectCard(
+              buttonText: "See more details",
+              projectModel: projects[7],
+              url: "https://pandapos.netlify.app/",
+            ),
           ],
         )
       ],
@@ -62,6 +78,12 @@ class ProjectCard extends StatelessWidget {
       required this.projectModel,
       required this.url,
       required this.buttonText});
+
+  bool _isArabic(String text) {
+    // Check if the text contains a significant number of Arabic characters
+    final arabicRegExp = RegExp(r'[\u0600-\u06FF]');
+    return arabicRegExp.hasMatch(text);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -97,11 +119,14 @@ class ProjectCard extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Text(
                   projectModel.description!,
-                  maxLines: 5,
+                  maxLines: 10,
                   style: const TextStyle(
                     fontSize: 16,
                     overflow: TextOverflow.ellipsis,
                   ),
+                  textDirection: _isArabic(projectModel.description!)
+                      ? TextDirection.rtl
+                      : TextDirection.ltr,
                 ),
               ),
               Padding(

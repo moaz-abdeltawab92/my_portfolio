@@ -41,4 +41,22 @@ List<ProjectModel> projects = [
     imgURL: 'asset/images/book.png',
     projectName: 'Bookly App',
   ),
+  ProjectModel(
+    description:
+        "Routiner App is a modern Android app built with Jetpack Compose to help you track your daily habits and progress easily. You can add habits, get reminders, and view your stats in a simple interface. This project was developed collaboratively as part of the Digital Egypt Pioneers Initiative (DEPI), where I contributed to the mobile app development.",
+    imgURL: 'asset/images/routiner.png',
+    projectName: 'Routiner App',
+  ),
+  ProjectModel(
+    description:
+        "لوحة تحكم متكاملة لإدارة المطاعم والكافيهات، تتيح لك متابعة التقارير والإحصائيات لحظيًا، إدارة المنيو والمخزون والمصروفات، تحليل الأرباح، واستخراج تقارير مفصلة بضغطة زر. كل ذلك من خلال واجهة سهلة تدعم العربية والإنجليزية، لتبقى دائمًا على اطلاع كامل بكل تفاصيل عملك.",
+    imgURL: 'asset/images/poss.png',
+    projectName: 'Panda POS Admin',
+  ),
+  ProjectModel(
+    description:
+        "تطبيق كاشير ذكي وسريع مصمم لتسهيل عمليات البيع اليومية في المطاعم والكافيهات. يمكنك من تسجيل الطلبات بدقة، ربط مباشر مع الإدارة، تحديث المخزون تلقائيًا، وتقليل الأخطاء البشرية. يصدر فاتورة مع كل طلب. واجهة استخدام بسيطة تدعم تعدد اللغات وتضمن تجربة سلسة للكاشير والعملاء.",
+    imgURL: 'asset/images/casheir.png',
+    projectName: 'Panda POS Cashier',
+  ),
 ];

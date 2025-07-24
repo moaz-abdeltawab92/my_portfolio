@@ -8,7 +8,7 @@ class ProfileAndIntro extends StatelessWidget {
 
   void _launchURL() async {
     final Uri url = Uri.parse(
-        "https://drive.google.com/file/d/1ObnKjPl8MYVqUQ7OM7lx4mdjEwDACH-J/view?usp=drive_link");
+        "https://drive.google.com/file/d/1cGqfzVihAGwYgb9ya8HLDx0_RcziPhdA/view");
     if (await canLaunchUrl(url)) {
       await launchUrl(url, mode: LaunchMode.externalApplication);
     } else {

@@ -8,6 +8,15 @@ class Responsive {
     return MediaQuery.of(context).size.width <= 600;
   }
 
+  static bool isTablet(BuildContext context) {
+    return MediaQuery.of(context).size.width > 600 &&
+        MediaQuery.of(context).size.width <= 1000;
+  }
+
+  static bool isDesktop(BuildContext context) {
+    return MediaQuery.of(context).size.width > 1000;
+  }
+
   // otherwise it indicates a desktop or web and takes the full width of screen
   static double widthOfScreen(BuildContext context) {
     return MediaQuery.of(context).size.width;

@@ -57,7 +57,7 @@ class _ContactFormState extends State<ContactForm> {
                 children: [
                   const Text(
                     "Full Name",
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 18,
                       color: Color(0xffAF8F6F),
                       fontWeight: FontWeight.bold,
@@ -83,7 +83,7 @@ class _ContactFormState extends State<ContactForm> {
                   const SizedBox(height: 20),
                   const Text(
                     "Message",
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 18,
                       color: Color(0xffAF8F6F),
                       fontWeight: FontWeight.bold,
@@ -96,12 +96,12 @@ class _ContactFormState extends State<ContactForm> {
                     keyboardType: TextInputType.multiline,
                     decoration: const InputDecoration(
                       hintText: "Your Message",
-                      border: const OutlineInputBorder(
+                      border: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Colors.blue,
                         ),
                       ),
-                      contentPadding: const EdgeInsets.symmetric(
+                      contentPadding: EdgeInsets.symmetric(
                         horizontal: 10,
                         vertical: 15,
                       ),

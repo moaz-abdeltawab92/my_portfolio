@@ -1,35 +1,44 @@
 class ProjectModel {
   final String imgURL;
   final String projectName;
+  final String? tagline;
   final String? description;
   final List<String> images;
   final String? detailedDescription;
   final String? githubLink;
   final String? downloadLink;
   final String? demoLink;
+  final String? playStoreLink;
+  final String? appStoreLink;
   final List<String>? skills;
   final bool isPrivate;
+  final int? downloadCount;
 
   ProjectModel({
     required this.imgURL,
     required this.projectName,
+    this.tagline,
     this.description,
     this.demoLink,
     required this.images,
     this.detailedDescription,
     this.githubLink,
     this.downloadLink,
+    this.playStoreLink,
+    this.appStoreLink,
     this.skills,
     this.isPrivate = false,
+    this.downloadCount,
   });
 }
 
 List<ProjectModel> projects = [
   ProjectModel(
     description:
-        """تطبيق ديني شامل يجمع بين القرآن الكريم والأذكار والسبحة الإلكترونية والأدعية.""",
+        """قرآن كامل، أذكار، مواقيت صلاة، قبلة، تتبع صلوات، سبحة، أدعية، وأحاديث. معظم المميزات تعمل بدون إنترنت.""",
     imgURL: 'asset/tazkira/icon.png',
     projectName: 'تَذْكِرَة',
+    tagline: 'رفيق المسلم اليومي',
     images: [
       'asset/tazkira/7.png',
       'asset/tazkira/8.png',
@@ -37,24 +46,58 @@ List<ProjectModel> projects = [
       'asset/tazkira/10.png'
     ],
     detailedDescription:
-        """تطبيق ديني بسيط يجمع بين القرآن الكريم (قراءة واستماع)،مواقيت الصلاة حسب موقعك , أذكار الصباح والمساء واذكار اخري متنوعة، سبحة إلكترونية، أدعية من القرآن والسنة، تتبع الصلاة لمتابعة الفروض اليومية، وأحاديث نبوية. هدف التطبيق هو تسهيل الوصول إلى الأذكار والعبادات اليومية من مكان واحد، مع تصميم بسيط وسهل الاستخدام.""",
-    downloadLink:
+        """تَذْكِرَة — رفيق المسلم اليومي
+
+تطبيق تَذْكِرَة هو رفيقك اليومي لكل مسلم يسعى للاقتراب من الله وتنظيم عباداته بطريقة سهلة وعملية. يجمع أهم العبادات اليومية في مكان واحد، مع إمكانية استخدام معظم الخصائص بدون إنترنت وتصميم بسيط يناسب جميع الأعمار.
+
+القرآن الكريم: مصحف كامل للقراءة والاستماع، تفسير ميسر أثناء القراءة، وإمكانية التحميل للاستخدام Offline.
+
+الأذكار اليومية: أذكار الصباح والمساء والنوم، وأذكار متنوعة (الأذان، بعد الصلاة، الوضوء، المسجد، الطعام، دخول وخروج المنزل، الاستيقاظ، الشكر، والاستغفار).
+
+السبحة الإلكترونية: سبحة رقمية مع إحصائيات توضح عدد مرات كل ذكر لمتابعة تقدمك.
+
+مواقيت الصلاة: عرض دقيق لمواقيت الصلاة اليومية في الصفحة الرئيسية حسب موقعك الجغرافي.
+
+تتبع الصلاة: تسجيل ومتابعة الصلوات الخمس يوميًا، مع إحصائيات Streak والأيام المتتالية وقيام الليل.
+
+الإشعارات والتنبيهات: تذكير بالأذكار والأدعية، تنبيه قبل كل صلاة، تذكير يوم الجمعة (سورة الكهف والصلاة على النبي)، تذكير يومي بسورة الملك قبل النوم، وتنبيه الثلث الأخير من الليل للقيام.
+
+الأدعية والأحاديث النبوية: أدعية مأثورة من القرآن والسنة، وأحاديث مصنفة حسب الموضوع (الإيمان، الصلاة، الصبر، التوكل، الإحسان، وغيرها).
+
+أسماء الله الحسنى: عرض كامل مع شرح مبسط لمعاني كل اسم.
+
+اتجاه القبلة: تحديد اتجاه القبلة بدقة باستخدام مستشعرات الهاتف.
+
+السنن والآداب الإسلامية: مجموعة من السنن النبوية والآداب اليومية مع الأدلة من القرآن والسنة.
+
+البودكاستات الدينية: قائمة مقترحة (السيرة النبوية، التزكية، الفقه، وغيرها) مع التوجيه للاستماع من المصادر الأصلية.
+
+مميزات إضافية: ختمة رمضان الذكية (ختمة واحدة أو ختمتين)، تعديل التاريخ الهجري حسب موقعك، مشاركة الآيات القرآنية كصور، وآية أو حديث يومي في الصفحة الرئيسية.
+
+تطبيق واحد يجمع أهم ما يحتاجه المسلم يوميًا — بتجربة استخدام مريحة ومحتوى موثوق.""",
+    playStoreLink:
         "https://play.google.com/store/apps/details?id=com.moaz.tazkira",
+    appStoreLink:
+        "https://apps.apple.com/eg/app/%D8%AA%D8%B0%D9%83%D8%B1%D8%A9-%D8%B1%D9%81%D9%8A%D9%82-%D8%A7%D9%84%D9%85%D8%B3%D9%84%D9%85-%D8%A7%D9%84%D9%8A%D9%88%D9%85%D9%8A/id6757756421",
     skills: [
       'Flutter',
       'Dart',
-      "Google Maps Live Location",
-      'Firebase',
-      "Responsive Design",
-      "Local Storage",
+      'Location Services',
+      'Push Notifications',
+      'Offline Support',
+      'Local Storage',
+      'Responsive Design',
+      'Audio Playback',
     ],
     isPrivate: false,
+    downloadCount: 1500,
   ),
   ProjectModel(
     description:
-        """A restaurant management app that lets owners control menus, track performance, and manage their business easily.""",
+        """منيو رقمي احترافي، QR Code للمشاركة، روابط السوشيال ميديا، وتحديثات لحظية — كلها من مكان واحد.""",
     imgURL: 'asset/takka/eats.png',
-    projectName: 'Takka',
+    projectName: 'تكة',
+    tagline: 'Takka Smart',
     images: [
       'asset/takka/login.png',
       'asset/takka/dashboard.png',
@@ -64,20 +107,70 @@ List<ProjectModel> projects = [
     demoLink:
         "https://drive.google.com/file/d/1VgLF6qrjozypDzQCrIcWO_qccFaDUCc7/view?usp=drive_link",
     detailedDescription:
-        """Takka is a comprehensive restaurant management system built with Flutter. It provides a powerful control panel for restaurant owners to manage digital menus, monitor performance metrics, and customize their online presence dynamically. The app follows a clean and scalable architecture with full Arabic and English support.""",
+        """تكة — Takka Smart
+
+تطبيق تكة هو شريكك الذكي لإدارة تواجدك الرقمي وتسهيل وصول العملاء لخدماتك. صُمم خصيصاً ليمنح أصحاب المطاعم والكافيهات تحكماً كاملاً وسهلاً في قائمة منتجاتهم وروابط التواصل الخاصة بهم.
+
+المنيو الرقمي: أنشئ ونظم قائمة طعامك بسهولة — أضف الأقسام (مقبلات، حلويات، مشروبات، أطباق رئيسية) مع إمكانية إضافة وتعديل وحذف الأصناف، وصور عالية الجودة لكل صنف، والتحكم في ظهور الأقسام وإخفائها بضغطة زر.
+
+مشاركة سريعة عبر QR: احصل على رابط مباشر ورمز استجابة سريعة (QR Code) مجاني واحترافي لتمكين عملائك من الوصول للمنيو بمجرد مسح الكود بكاميرا الهاتف.
+
+روابط السوشيال ميديا: اجمع كل روابط منصات التواصل (واتساب، فيسبوك، انستجرام، تيك توك) في صفحة واحدة منسقة لزيادة متابعيك وعملائك.
+
+تحديثات لحظية: أي تعديل تقوم به على التطبيق يظهر فوراً لعملائك — بدون الحاجة لإعادة طباعة المنيو.
+
+تسجيل دخول آمن: تجربة استخدام آمنة وسريعة مع خيارات تسجيل دخول متعددة (بما في ذلك Google) لحماية بياناتك.
+
+مبني بـ Flutter مع Clean Architecture ودعم كامل للغتين العربية والإنجليزية.""",
     skills: [
       'Flutter',
       'Dart',
-      "Cubit",
-      "Clean Architecture",
-      "Login With Google",
-      "Dependency Injection",
-      "Localization Support Arabic and English",
-      "API",
-      "UI/UX",
-      "Local Storage",
-      "Responsive Design",
-      "Code Quality",
+      'Cubit',
+      'Clean Architecture',
+      'Google Sign In',
+      'QR Code',
+      'Localization AR/EN',
+      'Dependency Injection',
+      'Responsive Design',
+      'UI/UX',
+    ],
+    isPrivate: false,
+    playStoreLink: "https://play.google.com/store/apps/details?id=com.takkasmart.eats",
+    appStoreLink: "https://apps.apple.com/us/app/%D8%AA%D9%83%D8%A9-takka-smart/id6756178095",
+  ),
+  ProjectModel(
+    description:
+        """حجز سريع، اختيار الخدمة، تحديد الميعاد، وخدمة لحد باب البيت — مع إشعارات لكل تحديث.""",
+    imgURL: 'asset/halak/icon.png',
+    projectName: 'حلاقك',
+    tagline: 'Halaktak',
+    images: [
+      'asset/halak/screens.png',
+      'asset/halak/booking.png',
+    ],
+    detailedDescription:
+        """حلاقك — Halaktak
+
+تعبت من الزحمة والانتظار في صالونات الحلاقة؟ تطبيق حلاقك بيخليك تحجز حلاقتك وأنت في مكانك بكل سهولة.
+
+للعميل:
+حجز سريع وسهل في ثوانٍ — اختار الخدمة اللي تناسبك (حلاقة شعر، دقن، تجميل)، حدد المعاد المناسب، واكتب عنوانك، والحلاق يوصلك لحد باب البيت. تابع حجزك أول بأول مع الحلاق واحصل على إشعارات بكل تحديث على طلبك.
+
+للحلاق:
+لوحة تحكم لمراجعة الطلبات وقبولها أو رفضها، مع إدارة كاملة للمواعيد — تحكم يومي وأسبوعي في الجدول — ومنع الحجز المزدوج تلقائيًا.
+
+كل حاجة معمولة عشان توفر وقتك وتريحك من أي زحمة أو انتظار.""",
+    playStoreLink: "https://play.google.com/store/apps/details?id=com.moaz.halaak",
+    skills: [
+      'Flutter',
+      'Dart',
+      'Firebase Authentication',
+      'Cloud Firestore',
+      'Cloudinary',
+      'Push Notifications',
+      'Role-Based Access',
+      'Booking System',
+      'Location Services',
     ],
     isPrivate: false,
   ),
@@ -207,48 +300,11 @@ List<ProjectModel> projects = [
     ],
     isPrivate: false,
   ),
-  ProjectModel(
-    description:
-        """A clean and simple notes app to create, edit, and manage personal notes easily.""",
-    imgURL: 'asset/notes/noticon.png',
-    projectName: 'Notes App',
-    images: [
-      'asset/notes/n1.png',
-      'asset/notes/n2.png',
-      'asset/notes/n3.png',
-    ],
-    detailedDescription:
-        """Notes App is a user-friendly application built with Flutter to help users create, edit, and manage notes efficiently. It features a clean design, supports local storage with SQLite, and provides smooth performance for daily productivity.""",
-    githubLink: "https://github.com/moaz-abdeltawab92/Notes-App",
-    skills: [
-      'Flutter',
-      'Dart',
-      'Firebase',
-      "Authentication",
-      "Login With Google",
-      'Local Storage',
-    ],
-    isPrivate: false,
-  ),
-  ProjectModel(
-    description:
-        """Bookly App lets users explore free e-books and preview content quickly.""",
-    imgURL: 'asset/book/bookicon.jpg',
-    projectName: 'Bookly App',
-    images: [
-      'asset/book/book.png',
-    ],
-    detailedDescription:
-        """Bookly App provides a wide selection of free books with the ability to search, preview, and read them easily. It integrates the Google Books API and offers a simple interface with a built-in reader for a smooth reading experience.""",
-    githubLink: "https://github.com/moaz-abdeltawab92/bookly_app.git",
-    skills: [
-      'Flutter',
-      'Dart',
-      'Google Books API',
-      "Cubit",
-      "MVVM Architecture",
-      "Dependency Injection",
-    ],
-    isPrivate: false,
-  ),
+
 ];
+
+final int playStoreAppsCount =
+    projects.where((p) => p.playStoreLink != null).length;
+
+final int appStoreAppsCount =
+    projects.where((p) => p.appStoreLink != null).length;

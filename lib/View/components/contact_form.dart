@@ -59,7 +59,7 @@ class _ContactFormState extends State<ContactForm> {
                     "Full Name",
                     style: TextStyle(
                       fontSize: 18,
-                      color: Color(0xffAF8F6F),
+                      color: primaryColor,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -85,7 +85,7 @@ class _ContactFormState extends State<ContactForm> {
                     "Message",
                     style: TextStyle(
                       fontSize: 18,
-                      color: Color(0xffAF8F6F),
+                      color: primaryColor,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -113,7 +113,7 @@ class _ContactFormState extends State<ContactForm> {
                       Expanded(
                         child: OutlinedButton(
                           style: OutlinedButton.styleFrom(
-                            backgroundColor: const Color(0xffC1BAA1),
+                            backgroundColor: secondaryColor,
                           ),
                           onPressed: () async {
                             final name = _nameController.text.trim();

@@ -9,29 +9,31 @@ import 'package:portfolio_website/View/Components/recent_project.dart';
 import 'package:portfolio_website/View/Components/social_icons.dart';
 import 'package:portfolio_website/View/Components/top_skill.dart';
 import 'package:portfolio_website/View/components/contact_form.dart';
+import 'package:portfolio_website/Utils/section_keys.dart';
 import 'package:portfolio_website/View/components/topbar.dart';
 
 class DeveloperPortFolio extends StatelessWidget {
   DeveloperPortFolio({super.key});
   final ScrollController _scrollController = ScrollController();
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
+  final PortfolioSectionKeys _sectionKeys = PortfolioSectionKeys();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _globalKey,
-      backgroundColor: const Color(0XFFECEBDE),
+      backgroundColor: backgroundColor,
       appBar: AppBar(
         centerTitle: false,
         title: Text(
-          "Portfolio",
+          "Moaz Ayman",
           style: GoogleFonts.nunito(
             fontSize: 26,
             fontWeight: FontWeight.bold,
             color: textColor,
           ),
         ),
-        backgroundColor: const Color(0xffC1BAA1),
+        backgroundColor: appBarColor,
         elevation: 3,
         toolbarHeight: 70,
         actions: [
@@ -50,12 +52,12 @@ class DeveloperPortFolio extends StatelessWidget {
                   ),
                 )
               : TopBar(
-                  scrollController: _scrollController,
+                  sectionKeys: _sectionKeys,
                 ),
         ],
       ),
       endDrawer: Responsive.isMobile(context)
-          ? MyDrawer(scrollController: _scrollController)
+          ? MyDrawer(sectionKeys: _sectionKeys)
           : null,
       body: SafeArea(
         child: Stack(
@@ -67,13 +69,25 @@ class DeveloperPortFolio extends StatelessWidget {
                 children: [
                   const ProfileAndIntro(),
                   SizedBox(height: Responsive.isMobile(context) ? 40 : 0),
-                  const AboutMe(),
+                  Container(
+                    key: _sectionKeys.aboutKey,
+                    child: const AboutMe(),
+                  ),
                   const SizedBox(height: 55),
-                  const TopSkills(),
+                  Container(
+                    key: _sectionKeys.skillsKey,
+                    child: const TopSkills(),
+                  ),
                   const SizedBox(height: 55),
-                  const RecentProject(),
+                  Container(
+                    key: _sectionKeys.projectsKey,
+                    child: const RecentProject(),
+                  ),
                   const SizedBox(height: 55),
-                  const ContactForm(),
+                  Container(
+                    key: _sectionKeys.contactKey,
+                    child: const ContactForm(),
+                  ),
                   const SizedBox(height: 55),
                   const SizedBox(
                     height: 30,

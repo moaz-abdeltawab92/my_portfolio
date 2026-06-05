@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_website/Responsive/responsive.dart';
+import 'package:portfolio_website/models/project_model.dart';
 import 'dart:ui';
 import 'package:animate_do/animate_do.dart';
 import 'package:visibility_detector/visibility_detector.dart';
@@ -106,7 +107,7 @@ class _AboutMeState extends State<AboutMe> {
                             animate: _isVisible,
                             delay: const Duration(milliseconds: 700),
                             child: Text(
-                              "I specialize in Flutter, Dart, Firebase, API integration, Clean Architecture, BLoC state management and modern UI/UX design., with a focus on writing clean code and delivering great user experiences.",
+                              "With around 1.5 years of hands-on experience, I've worked on a wide range of freelance projects — restaurant systems, booking apps, POS dashboards, education platforms, and more. So far, I've published $playStoreAppsCount apps on Google Play and $appStoreAppsCount on the Apple App Store, with ${projects.length}+ projects in my portfolio.",
                               style: GoogleFonts.cairo(
                                 fontSize:
                                     Responsive.isMobile(context) ? 16 : 18,
@@ -121,7 +122,7 @@ class _AboutMeState extends State<AboutMe> {
                             animate: _isVisible,
                             delay: const Duration(milliseconds: 900),
                             child: Text(
-                              "I'm always eager to learn, grow, and collaborate on exciting projects.  I'm currently open to internships, part-time roles, and freelance projects in mobile app development.",
+                              "My core stack includes Flutter & Dart (Responsive & Adaptive UI), BLoC/Provider state management, Clean Architecture & MVVM, API integration with Dio/HTTP, and Firebase (Authentication, Firestore, FCM). I also work with Hive & Shared Preferences, follow OOP & SOLID principles, and build multilingual apps (Arabic & English) with Material Design, animations, and dark mode.",
                               style: GoogleFonts.cairo(
                                 fontSize:
                                     Responsive.isMobile(context) ? 16 : 18,
@@ -136,7 +137,37 @@ class _AboutMeState extends State<AboutMe> {
                             animate: _isVisible,
                             delay: const Duration(milliseconds: 1100),
                             child: Text(
-                              "Thanks for visiting and feel free to explore my work and reach out if you'd like to connect or collaborate",
+                              "I handle Android & iOS app publishing, release management, OTA updates with Shorebird, and production monitoring with Sentry. I'm also experienced with Flutter DevTools, Git/GitHub, and collaboration tools like Trello, Slack, and Jira.",
+                              style: GoogleFonts.cairo(
+                                fontSize:
+                                    Responsive.isMobile(context) ? 16 : 18,
+                                height: 1.6,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.black87,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          FadeInLeft(
+                            animate: _isVisible,
+                            delay: const Duration(milliseconds: 1300),
+                            child: Text(
+                              "I'm always eager to learn, grow, and collaborate on exciting projects. I'm currently open to internships, part-time roles, and freelance projects in mobile app development.",
+                              style: GoogleFonts.cairo(
+                                fontSize:
+                                    Responsive.isMobile(context) ? 16 : 18,
+                                height: 1.6,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.black87,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          FadeInLeft(
+                            animate: _isVisible,
+                            delay: const Duration(milliseconds: 1500),
+                            child: Text(
+                              "Thanks for visiting — feel free to explore my work and reach out if you'd like to connect or collaborate.",
                               style: GoogleFonts.cairo(
                                 fontSize:
                                     Responsive.isMobile(context) ? 16 : 18,

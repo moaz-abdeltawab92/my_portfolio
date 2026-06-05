@@ -58,14 +58,13 @@ flutter:
   assets:
     - asset/images/
     - asset/
-    - asset/book/
     - asset/iti/
     - asset/takka/
     - asset/routiner/
     - asset/doctor/
-    - asset/notes/
     - asset/pos/
     - asset/tazkira/
+    - asset/halak/
 
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see

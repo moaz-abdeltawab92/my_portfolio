@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_website/Responsive/responsive.dart';
+import 'package:portfolio_website/Utils/colors.dart';
+import 'package:portfolio_website/View/components/project_name_title.dart';
 import 'package:portfolio_website/View/screens/project_details_page.dart';
 import 'package:portfolio_website/models/project_model.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -113,7 +115,7 @@ class _ProjectCardState extends State<ProjectCard> {
               boxShadow: [
                 BoxShadow(
                   color: _isHovered
-                      ? const Color(0xffAF8F6F).withOpacity(0.4)
+                      ? primaryColor.withOpacity(0.4)
                       : Colors.grey,
                   blurRadius: _isHovered ? 20 : 4,
                   spreadRadius: _isHovered ? 8 : 3,
@@ -126,14 +128,14 @@ class _ProjectCardState extends State<ProjectCard> {
                       end: Alignment.bottomRight,
                       colors: [
                         Colors.white,
-                        const Color(0xffC1BAA1).withOpacity(0.1),
+                        secondaryColor.withOpacity(0.1),
                       ],
                     )
                   : null,
               color: _isHovered ? null : Colors.white,
               border: _isHovered
                   ? Border.all(
-                      color: const Color(0xffAF8F6F).withOpacity(0.3),
+                      color: primaryColor.withOpacity(0.3),
                       width: 2,
                     )
                   : null,
@@ -158,15 +160,41 @@ class _ProjectCardState extends State<ProjectCard> {
                       ),
                     ),
                   ),
-                  Text(
-                    widget.projectModel.projectName,
-                    style: TextStyle(
-                      fontSize: 21,
-                      fontWeight: FontWeight.bold,
-                      color:
-                          _isHovered ? const Color(0xffAF8F6F) : Colors.black,
-                    ),
+                  ProjectNameTitle(
+                    projectName: widget.projectModel.projectName,
+                    tagline: widget.projectModel.tagline,
+                    nameFontSize: 21,
+                    taglineFontSize: 15,
+                    nameColor:
+                        _isHovered ? primaryColor : Colors.black,
                   ),
+                  if (widget.projectModel.playStoreLink != null ||
+                      widget.projectModel.appStoreLink != null ||
+                      widget.projectModel.downloadCount != null)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8),
+                      child: Wrap(
+                        spacing: 6,
+                        runSpacing: 6,
+                        alignment: WrapAlignment.center,
+                        children: [
+                          if (widget.projectModel.downloadCount != null)
+                            AnimatedDownloadsBadge(
+                              downloadCount: widget.projectModel.downloadCount!,
+                            ),
+                          if (widget.projectModel.playStoreLink != null)
+                            const StoreStatusBadge(
+                              label: 'Live on Play Store',
+                              icon: Icons.android,
+                            ),
+                          if (widget.projectModel.appStoreLink != null)
+                            const StoreStatusBadge(
+                              label: 'Live on App Store',
+                              icon: Icons.apple,
+                            ),
+                        ],
+                      ),
+                    ),
                   const SizedBox(height: 10),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -194,8 +222,8 @@ class _ProjectCardState extends State<ProjectCard> {
                         gradient: _isHovered
                             ? const LinearGradient(
                                 colors: [
-                                  Color(0xffAF8F6F),
-                                  Color(0xffC1BAA1),
+                                  primaryColor,
+                                  secondaryColor,
                                 ],
                               )
                             : null,
@@ -250,6 +278,136 @@ class _ProjectCardState extends State<ProjectCard> {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class AnimatedDownloadsBadge extends StatefulWidget {
+  final int downloadCount;
+
+  const AnimatedDownloadsBadge({super.key, required this.downloadCount});
+
+  @override
+  State<AnimatedDownloadsBadge> createState() => _AnimatedDownloadsBadgeState();
+}
+
+class _AnimatedDownloadsBadgeState extends State<AnimatedDownloadsBadge>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller;
+  late final Animation<int> _countAnimation;
+  bool _hasAnimated = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 1800),
+      vsync: this,
+    );
+    _countAnimation = IntTween(begin: 0, end: widget.downloadCount).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _startAnimation() {
+    if (!_hasAnimated) {
+      _hasAnimated = true;
+      _controller.forward();
+    }
+  }
+
+  String _formatCount(int count) {
+    final text = count >= 1000
+        ? '${count ~/ 1000},${(count % 1000).toString().padLeft(3, '0')}'
+        : '$count';
+    return '$text+ Downloads';
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return VisibilityDetector(
+      key: Key('downloads-badge-${widget.downloadCount}'),
+      onVisibilityChanged: (info) {
+        if (info.visibleFraction > 0.4) _startAnimation();
+      },
+      child: AnimatedBuilder(
+        animation: _countAnimation,
+        builder: (context, child) {
+          return Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            decoration: BoxDecoration(
+              color: const Color(0xFF2E7D32).withOpacity(0.1),
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(
+                color: const Color(0xFF2E7D32).withOpacity(0.35),
+              ),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(
+                  Icons.trending_up_rounded,
+                  size: 14,
+                  color: Color(0xFF2E7D32),
+                ),
+                const SizedBox(width: 4),
+                Text(
+                  _formatCount(_countAnimation.value),
+                  style: const TextStyle(
+                    fontSize: 11,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xFF2E7D32),
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class StoreStatusBadge extends StatelessWidget {
+  final String label;
+  final IconData icon;
+
+  const StoreStatusBadge({
+    super.key,
+    required this.label,
+    required this.icon,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      decoration: BoxDecoration(
+        color: primaryColor.withOpacity(0.12),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: primaryColor.withOpacity(0.35)),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, size: 14, color: primaryColor),
+          const SizedBox(width: 4),
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 11,
+              fontWeight: FontWeight.w600,
+              color: primaryColor,
+            ),
+          ),
+        ],
       ),
     );
   }

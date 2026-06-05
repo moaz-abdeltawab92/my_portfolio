@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_website/Responsive/responsive.dart';
 import 'package:portfolio_website/models/project_model.dart';
 import 'package:portfolio_website/Utils/colors.dart';
+import 'package:portfolio_website/View/components/project_name_title.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -55,15 +56,14 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: AppBar(
-        title: Text(
-          widget.project.projectName,
-          style: GoogleFonts.nunito(
-            fontSize: Responsive.isMobile(context) ? 22 : 26,
-            fontWeight: FontWeight.bold,
-            color: textColor,
-          ),
+        title: ProjectNameTitle(
+          projectName: widget.project.projectName,
+          tagline: widget.project.tagline,
+          nameFontSize: Responsive.isMobile(context) ? 20 : 24,
+          taglineFontSize: Responsive.isMobile(context) ? 14 : 16,
+          nameColor: textColor,
         ),
-        backgroundColor: const Color(0xffC1BAA1),
+        backgroundColor: appBarColor,
         elevation: 4,
       ),
       body: SingleChildScrollView(
@@ -138,14 +138,15 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                widget.project.projectName,
-                                style: GoogleFonts.nunito(
-                                  fontSize:
-                                      Responsive.isMobile(context) ? 26 : 38,
-                                  fontWeight: FontWeight.bold,
-                                  color: textColor,
-                                ),
+                              ProjectNameTitle(
+                                projectName: widget.project.projectName,
+                                tagline: widget.project.tagline,
+                                nameFontSize:
+                                    Responsive.isMobile(context) ? 26 : 38,
+                                taglineFontSize:
+                                    Responsive.isMobile(context) ? 18 : 24,
+                                nameColor: textColor,
+                                textAlign: TextAlign.start,
                               ),
                               const SizedBox(height: 15),
                               Text(
@@ -202,6 +203,8 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
                                 child: Wrap(
                                   spacing: 15,
                                   runSpacing: 15,
+                                  alignment: WrapAlignment.center,
+                                  crossAxisAlignment: WrapCrossAlignment.center,
                                   children: [
                                     if (widget.project.isPrivate)
                                       Chip(
@@ -218,6 +221,18 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
                                         ),
                                         backgroundColor:
                                             const Color(0xFFC62828),
+                                      ),
+                                    if (!widget.project.isPrivate &&
+                                        widget.project.playStoreLink != null)
+                                      StoreBadgeButton(
+                                        imageUrl: 'asset/images/play_store_badge.png',
+                                        linkUrl: widget.project.playStoreLink!,
+                                      ),
+                                    if (!widget.project.isPrivate &&
+                                        widget.project.appStoreLink != null)
+                                      StoreBadgeButton(
+                                        imageUrl: 'asset/images/app_store_badge.png',
+                                        linkUrl: widget.project.appStoreLink!,
                                       ),
                                     if (!widget.project.isPrivate &&
                                         widget.project.githubLink != null)
@@ -317,6 +332,48 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class StoreBadgeButton extends StatefulWidget {
+  final String imageUrl;
+  final String linkUrl;
+
+  const StoreBadgeButton({
+    super.key,
+    required this.imageUrl,
+    required this.linkUrl,
+  });
+
+  @override
+  State<StoreBadgeButton> createState() => _StoreBadgeButtonState();
+}
+
+class _StoreBadgeButtonState extends State<StoreBadgeButton> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      cursor: SystemMouseCursors.click,
+      child: AnimatedScale(
+        scale: _isHovered ? 1.05 : 1.0,
+        duration: const Duration(milliseconds: 200),
+        child: InkWell(
+          onTap: () {
+            launchUrl(Uri.parse(widget.linkUrl));
+          },
+          borderRadius: BorderRadius.circular(8),
+          child: Image.asset(
+            widget.imageUrl,
+            height: 55,
+            fit: BoxFit.contain,
+          ),
         ),
       ),
     );

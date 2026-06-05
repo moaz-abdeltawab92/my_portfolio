@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_website/Responsive/responsive.dart';
+import 'package:portfolio_website/Utils/colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
@@ -35,7 +36,7 @@ class _ProfileAndIntroState extends State<ProfileAndIntro>
 
   void _launchURL() async {
     final Uri url = Uri.parse(
-        "https://drive.google.com/file/d/1JMOrh2ipQp0ksjfpHTvcrJu0UlVub5-p/view?usp=sharing");
+        "https://drive.google.com/file/d/17AMbacPQ9w8uZ2i8676NN6_TzCCJtbQK/view");
     if (await canLaunchUrl(url)) {
       await launchUrl(url, mode: LaunchMode.externalApplication);
     } else {
@@ -66,7 +67,6 @@ class _ProfileAndIntroState extends State<ProfileAndIntro>
                         : Responsive.widthOfScreen(context) / 2,
                     child: Center(
                       child: SizedBox(
-                        height: 300,
                         width: Responsive.isMobile(context)
                             ? Responsive.widthOfScreen(context) * 0.85
                             : 450,
@@ -86,7 +86,7 @@ class _ProfileAndIntroState extends State<ProfileAndIntro>
                             padding: const EdgeInsets.all(20),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
                               children: [
                                 FadeInDown(
                                   delay: const Duration(milliseconds: 300),
@@ -96,7 +96,7 @@ class _ProfileAndIntroState extends State<ProfileAndIntro>
                                       fontSize: Responsive.isMobile(context)
                                           ? 36
                                           : 40,
-                                      color: const Color(0xffAF8F6F),
+                                      color: primaryColor,
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),
@@ -106,10 +106,13 @@ class _ProfileAndIntroState extends State<ProfileAndIntro>
                                   child: AnimatedTextKit(
                                     animatedTexts: [
                                       TypewriterAnimatedText(
-                                        "I'm Moaz Ayman,\na Passionate Mobile App Developer,\nSpecializing in Flutter App Development.",
+                                        "I'm Moaz Ayman,\na Flutter Developer with 1.5+ years of experience,\npublishing real apps on Play Store & App Store",
                                         textStyle: GoogleFonts.cairo(
-                                          fontSize: 20,
+                                          fontSize: Responsive.isMobile(context)
+                                              ? 17
+                                              : 19,
                                           fontWeight: FontWeight.w600,
+                                          height: 1.4,
                                         ),
                                         speed: const Duration(milliseconds: 50),
                                       ),
@@ -117,7 +120,9 @@ class _ProfileAndIntroState extends State<ProfileAndIntro>
                                     totalRepeatCount: 1,
                                   ),
                                 ),
-                                const SizedBox(height: 20),
+                                SizedBox(
+                                    height:
+                                        Responsive.isMobile(context) ? 14 : 20),
                                 FadeInUp(
                                   delay: const Duration(milliseconds: 1500),
                                   child: Center(
@@ -139,21 +144,20 @@ class _ProfileAndIntroState extends State<ProfileAndIntro>
                                               gradient: _isButtonHovered
                                                   ? const LinearGradient(
                                                       colors: [
-                                                        Color(0xffAF8F6F),
-                                                        Color(0xffC1BAA1),
+                                                        primaryColor,
+                                                        secondaryColor,
                                                       ],
                                                     )
                                                   : null,
                                               color: _isButtonHovered
                                                   ? null
-                                                  : const Color(0xffAF8F6F),
+                                                  : primaryColor,
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                               boxShadow: _isButtonHovered
                                                   ? [
                                                       BoxShadow(
-                                                        color: const Color(
-                                                                0xffAF8F6F)
+                                                        color: primaryColor
                                                             .withOpacity(0.5),
                                                         blurRadius: 15,
                                                         spreadRadius: 2,
@@ -220,9 +224,9 @@ class _ProfileAndIntroState extends State<ProfileAndIntro>
                               shape: BoxShape.circle,
                               gradient: SweepGradient(
                                 colors: const [
-                                  Color(0xffAF8F6F),
-                                  Color(0xffC1BAA1),
-                                  Color(0xffAF8F6F),
+                                  primaryColor,
+                                  secondaryColor,
+                                  primaryColor,
                                 ],
                                 stops: const [0.0, 0.5, 1.0],
                                 transform: GradientRotation(
@@ -230,8 +234,7 @@ class _ProfileAndIntroState extends State<ProfileAndIntro>
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                  color:
-                                      const Color(0xffAF8F6F).withOpacity(0.3),
+                                  color: primaryColor.withOpacity(0.3),
                                   blurRadius: 15,
                                   spreadRadius: 2,
                                 ),
@@ -246,7 +249,7 @@ class _ProfileAndIntroState extends State<ProfileAndIntro>
                               padding: const EdgeInsets.all(3),
                               child: ClipOval(
                                 child: Image.asset(
-                                  "asset/images/aa.jpg",
+                                  "asset/images/3.jpg",
                                   fit: BoxFit.contain,
                                   width: double.infinity,
                                   height: double.infinity,

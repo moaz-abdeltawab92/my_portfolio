@@ -2,110 +2,83 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_website/Responsive/responsive.dart';
 import 'package:portfolio_website/Utils/colors.dart';
+import 'package:portfolio_website/Utils/section_keys.dart';
 
 class TopBar extends StatelessWidget {
-  final ScrollController scrollController;
-  const TopBar({super.key, required this.scrollController});
+  final PortfolioSectionKeys sectionKeys;
+  const TopBar({super.key, required this.sectionKeys});
 
   @override
   Widget build(BuildContext context) {
     bool isMobile = Responsive.isMobile(context);
     return isMobile
         ? Column(
-            children: topBarData(scrollController, context, isMobile: true),
+            children: _topBarData(context, isMobile: true),
           )
         : Row(
-            children: topBarData(scrollController, context),
+            children: _topBarData(context),
           );
   }
 
-  List<Widget> topBarData(
-      ScrollController scrollController, BuildContext context,
-      {bool isMobile = false}) {
-    int scrollDuration = isMobile ? 800 : 500;
-    // the main operation is to scroll when we click on any items in topbar
+  void _navigateToSection(BuildContext context, GlobalKey sectionKey) {
+    final isMobile = Responsive.isMobile(context);
+    if (isMobile) {
+      Navigator.pop(context);
+      sectionKeys.scrollTo(sectionKey, afterFrame: true);
+    } else {
+      sectionKeys.scrollTo(sectionKey);
+    }
+  }
 
+  List<Widget> _topBarData(BuildContext context, {bool isMobile = false}) {
     return [
-      Padding(
-        padding:
-            EdgeInsets.symmetric(horizontal: 10, vertical: isMobile ? 20 : 0),
-        child: TextButton(
-          onPressed: () {
-            if (isMobile) Navigator.pop(context);
-            scrollController.animateTo(200,
-                duration: Duration(milliseconds: scrollDuration),
-                curve: Curves.bounceIn);
-          },
-          child: Text(
-            "About Me",
-            style: GoogleFonts.nunito(
-              fontSize: 22,
-              color: textColor,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
+      _navButton(
+        context,
+        label: 'About Me',
+        sectionKey: sectionKeys.aboutKey,
+        isMobile: isMobile,
       ),
-      Padding(
-        padding:
-            EdgeInsets.symmetric(horizontal: 10, vertical: isMobile ? 20 : 0),
-        child: TextButton(
-          onPressed: () {
-            if (isMobile) Navigator.pop(context);
-            scrollController.animateTo(isMobile ? 1050 : 1100,
-                duration: Duration(milliseconds: scrollDuration),
-                curve: Curves.bounceIn);
-          },
-          child: Text(
-            "Skills",
-            style: GoogleFonts.nunito(
-              fontSize: 22,
-              color: textColor,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
+      _navButton(
+        context,
+        label: 'Skills',
+        sectionKey: sectionKeys.skillsKey,
+        isMobile: isMobile,
       ),
-      Padding(
-        padding:
-            EdgeInsets.symmetric(horizontal: 10, vertical: isMobile ? 20 : 0),
-        child: TextButton(
-          onPressed: () {
-            if (isMobile) Navigator.pop(context);
-            scrollController.animateTo(isMobile ? 1500 : 1750,
-                duration: Duration(milliseconds: scrollDuration),
-                curve: Curves.bounceIn);
-          },
-          child: Text(
-            "Projects",
-            style: GoogleFonts.nunito(
-              fontSize: 22,
-              color: textColor,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
+      _navButton(
+        context,
+        label: 'Projects',
+        sectionKey: sectionKeys.projectsKey,
+        isMobile: isMobile,
       ),
-      Padding(
-        padding:
-            EdgeInsets.symmetric(horizontal: 10, vertical: isMobile ? 20 : 0),
-        child: TextButton(
-          onPressed: () {
-            if (isMobile) Navigator.pop(context);
-            scrollController.animateTo(isMobile ? 4000 : 2750,
-                duration: Duration(milliseconds: scrollDuration),
-                curve: Curves.bounceIn);
-          },
-          child: Text(
-            "Contact Me",
-            style: GoogleFonts.nunito(
-              fontSize: 22,
-              color: textColor,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
+      _navButton(
+        context,
+        label: 'Contact Me',
+        sectionKey: sectionKeys.contactKey,
+        isMobile: isMobile,
       ),
     ];
+  }
+
+  Widget _navButton(
+    BuildContext context, {
+    required String label,
+    required GlobalKey sectionKey,
+    required bool isMobile,
+  }) {
+    return Padding(
+      padding:
+          EdgeInsets.symmetric(horizontal: 10, vertical: isMobile ? 20 : 0),
+      child: TextButton(
+        onPressed: () => _navigateToSection(context, sectionKey),
+        child: Text(
+          label,
+          style: GoogleFonts.nunito(
+            fontSize: 22,
+            color: textColor,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    );
   }
 }

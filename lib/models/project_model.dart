@@ -45,8 +45,7 @@ List<ProjectModel> projects = [
       'asset/tazkira/9.png',
       'asset/tazkira/10.png'
     ],
-    detailedDescription:
-        """تَذْكِرَة — رفيق المسلم اليومي
+    detailedDescription: """تَذْكِرَة — رفيق المسلم اليومي
 
 تطبيق تَذْكِرَة هو رفيقك اليومي لكل مسلم يسعى للاقتراب من الله وتنظيم عباداته بطريقة سهلة وعملية. يجمع أهم العبادات اليومية في مكان واحد، مع إمكانية استخدام معظم الخصائص بدون إنترنت وتصميم بسيط يناسب جميع الأعمار.
 
@@ -90,7 +89,7 @@ List<ProjectModel> projects = [
       'Audio Playback',
     ],
     isPrivate: false,
-    downloadCount: 1500,
+    downloadCount: 2000,
   ),
   ProjectModel(
     description:
@@ -106,8 +105,7 @@ List<ProjectModel> projects = [
     ],
     demoLink:
         "https://drive.google.com/file/d/1VgLF6qrjozypDzQCrIcWO_qccFaDUCc7/view?usp=drive_link",
-    detailedDescription:
-        """تكة — Takka Smart
+    detailedDescription: """تكة — Takka Smart
 
 تطبيق تكة هو شريكك الذكي لإدارة تواجدك الرقمي وتسهيل وصول العملاء لخدماتك. صُمم خصيصاً ليمنح أصحاب المطاعم والكافيهات تحكماً كاملاً وسهلاً في قائمة منتجاتهم وروابط التواصل الخاصة بهم.
 
@@ -135,8 +133,10 @@ List<ProjectModel> projects = [
       'UI/UX',
     ],
     isPrivate: false,
-    playStoreLink: "https://play.google.com/store/apps/details?id=com.takkasmart.eats",
-    appStoreLink: "https://apps.apple.com/us/app/%D8%AA%D9%83%D8%A9-takka-smart/id6756178095",
+    playStoreLink:
+        "https://play.google.com/store/apps/details?id=com.takkasmart.eats",
+    appStoreLink:
+        "https://apps.apple.com/us/app/%D8%AA%D9%83%D8%A9-takka-smart/id6756178095",
   ),
   ProjectModel(
     description:
@@ -148,8 +148,7 @@ List<ProjectModel> projects = [
       'asset/halak/screens.png',
       'asset/halak/booking.png',
     ],
-    detailedDescription:
-        """حلاقك — Halaktak
+    detailedDescription: """حلاقك — Halaktak
 
 تعبت من الزحمة والانتظار في صالونات الحلاقة؟ تطبيق حلاقك بيخليك تحجز حلاقتك وأنت في مكانك بكل سهولة.
 
@@ -160,7 +159,8 @@ List<ProjectModel> projects = [
 لوحة تحكم لمراجعة الطلبات وقبولها أو رفضها، مع إدارة كاملة للمواعيد — تحكم يومي وأسبوعي في الجدول — ومنع الحجز المزدوج تلقائيًا.
 
 كل حاجة معمولة عشان توفر وقتك وتريحك من أي زحمة أو انتظار.""",
-    playStoreLink: "https://play.google.com/store/apps/details?id=com.moaz.halaak",
+    playStoreLink:
+        "https://play.google.com/store/apps/details?id=com.moaz.halaak",
     skills: [
       'Flutter',
       'Dart',
@@ -300,7 +300,6 @@ List<ProjectModel> projects = [
     ],
     isPrivate: false,
   ),
-
 ];
 
 final int playStoreAppsCount =

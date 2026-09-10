@@ -107,7 +107,7 @@ class _AboutMeState extends State<AboutMe> {
                             animate: _isVisible,
                             delay: const Duration(milliseconds: 700),
                             child: Text(
-                              "With around 1.5 years of hands-on experience, I've worked on a wide range of freelance projects — restaurant systems, booking apps, POS dashboards, education platforms, and more. So far, I've published $playStoreAppsCount apps on Google Play and $appStoreAppsCount on the Apple App Store, with ${projects.length}+ projects in my portfolio.",
+                              "With around 2 years of hands-on experience, I've worked on a wide range of freelance projects — restaurant systems, booking apps, POS dashboards, education platforms, and more. So far, I've published $playStoreAppsCount apps on Google Play and $appStoreAppsCount on the Apple App Store, with ${projects.length}+ projects in my portfolio.",
                               style: GoogleFonts.cairo(
                                 fontSize:
                                     Responsive.isMobile(context) ? 16 : 18,

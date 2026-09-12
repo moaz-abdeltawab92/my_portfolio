@@ -35,7 +35,7 @@ class _ProfileAndIntroState extends State<ProfileAndIntro>
 
   void _launchURL() async {
     final Uri url = Uri.parse(
-        "https://drive.google.com/file/d/17AMbacPQ9w8uZ2i8676NN6_TzCCJtbQK/view");
+        "https://drive.google.com/file/d/1jydvWSRc8eCpmVpQ3z8chvCkh7WKd50n/view?usp=drive_link");
     if (await canLaunchUrl(url)) {
       await launchUrl(url, mode: LaunchMode.externalApplication);
     } else {
@@ -324,9 +324,9 @@ class _ProfileAndIntroState extends State<ProfileAndIntro>
                 duration: const Duration(milliseconds: 1000),
                 child: SizedBox(
                   width:
-                      isMobile ? Responsive.widthOfScreen(context) * 0.8 : 360,
+                      isMobile ? Responsive.widthOfScreen(context) * 0.8 : 400,
                   height:
-                      isMobile ? Responsive.widthOfScreen(context) * 0.8 : 360,
+                      isMobile ? Responsive.widthOfScreen(context) * 0.8 : 400,
                   child: Stack(
                     alignment: Alignment.center,
                     children: [
@@ -390,7 +390,7 @@ class _ProfileAndIntroState extends State<ProfileAndIntro>
           FadeInUp(
             delay: const Duration(milliseconds: 1000),
             child: Container(
-              width: isMobile ? double.infinity : 850,
+              width: isMobile ? double.infinity : 980,
               padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 20),
               decoration: BoxDecoration(
                 color: cardColor,
@@ -423,6 +423,12 @@ class _ProfileAndIntroState extends State<ProfileAndIntro>
                     label: "Live Store Apps",
                     icon: Icons.storefront_rounded,
                   ),
+                  _StatItem(
+                    number: "3+",
+                    label: "Countries Served",
+                    subLabel: "Egypt, KSA, Oman & more",
+                    icon: Icons.public_rounded,
+                  ),
                 ],
               ),
             ),
@@ -436,12 +442,14 @@ class _ProfileAndIntroState extends State<ProfileAndIntro>
 class _StatItem extends StatelessWidget {
   final String number;
   final String label;
+  final String? subLabel;
   final IconData icon;
 
   const _StatItem({
     required this.number,
     required this.label,
     required this.icon,
+    this.subLabel,
   });
 
   @override
@@ -464,6 +472,7 @@ class _StatItem extends StatelessWidget {
         const SizedBox(width: 14),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
             Text(
               number,
@@ -481,6 +490,17 @@ class _StatItem extends StatelessWidget {
                 color: textColor.withOpacity(0.7),
               ),
             ),
+            if (subLabel != null) ...[
+              const SizedBox(height: 2),
+              Text(
+                subLabel!,
+                style: GoogleFonts.nunito(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w700,
+                  color: primaryColor,
+                ),
+              ),
+            ],
           ],
         ),
       ],

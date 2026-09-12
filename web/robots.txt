@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://moaz-portfolio-mu.vercel.app/sitemap.xml

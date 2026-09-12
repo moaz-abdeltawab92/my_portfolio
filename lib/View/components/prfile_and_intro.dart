@@ -116,7 +116,7 @@ class _ProfileAndIntroState extends State<ProfileAndIntro>
                                   ),
                                   const SizedBox(width: 10),
                                   Text(
-                                    "Available for Freelance & Full-Time",
+                                    "Available for Freelance, Part-Time & Full-Time",
                                     style: GoogleFonts.nunito(
                                       fontSize: isMobile ? 12 : 14,
                                       fontWeight: FontWeight.w700,
@@ -130,10 +130,12 @@ class _ProfileAndIntroState extends State<ProfileAndIntro>
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 16, vertical: 8),
                               decoration: BoxDecoration(
-                                color: const Color(0xFF2563EB).withOpacity(0.12),
+                                color:
+                                    const Color(0xFF2563EB).withOpacity(0.12),
                                 borderRadius: BorderRadius.circular(30),
                                 border: Border.all(
-                                  color: const Color(0xFF2563EB).withOpacity(0.3),
+                                  color:
+                                      const Color(0xFF2563EB).withOpacity(0.3),
                                   width: 1,
                                 ),
                               ),
@@ -148,6 +150,39 @@ class _ProfileAndIntroState extends State<ProfileAndIntro>
                                   const SizedBox(width: 8),
                                   Text(
                                     "Military Status: Exempted",
+                                    style: GoogleFonts.nunito(
+                                      fontSize: isMobile ? 12 : 14,
+                                      fontWeight: FontWeight.w700,
+                                      color: textColor,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 16, vertical: 8),
+                              decoration: BoxDecoration(
+                                color:
+                                    const Color(0xFF8B5CF6).withOpacity(0.12),
+                                borderRadius: BorderRadius.circular(30),
+                                border: Border.all(
+                                  color:
+                                      const Color(0xFF8B5CF6).withOpacity(0.3),
+                                  width: 1,
+                                ),
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  const Icon(
+                                    Icons.school_rounded,
+                                    size: 16,
+                                    color: Color(0xFF8B5CF6),
+                                  ),
+                                  const SizedBox(width: 8),
+                                  Text(
+                                    "B.Sc. in Information Technology",
                                     style: GoogleFonts.nunito(
                                       fontSize: isMobile ? 12 : 14,
                                       fontWeight: FontWeight.w700,
@@ -203,7 +238,7 @@ class _ProfileAndIntroState extends State<ProfileAndIntro>
                               speed: const Duration(milliseconds: 60),
                             ),
                             TypewriterAnimatedText(
-                              "Published on Google Play & Apple App Store",
+                              "Published on Google Play & App Store",
                               textStyle: GoogleFonts.nunito(
                                 fontSize: isMobile ? 20 : 26,
                                 fontWeight: FontWeight.w800,

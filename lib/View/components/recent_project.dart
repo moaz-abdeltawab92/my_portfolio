@@ -114,9 +114,8 @@ class _ProjectCardState extends State<ProjectCard> {
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
-                  color: _isHovered
-                      ? primaryColor.withOpacity(0.4)
-                      : Colors.grey,
+                  color:
+                      _isHovered ? primaryColor.withOpacity(0.4) : Colors.grey,
                   blurRadius: _isHovered ? 20 : 4,
                   spreadRadius: _isHovered ? 8 : 3,
                 ),
@@ -165,8 +164,7 @@ class _ProjectCardState extends State<ProjectCard> {
                     tagline: widget.projectModel.tagline,
                     nameFontSize: 21,
                     taglineFontSize: 15,
-                    nameColor:
-                        _isHovered ? primaryColor : Colors.black,
+                    nameColor: _isHovered ? primaryColor : Colors.black,
                   ),
                   if (widget.projectModel.playStoreLink != null ||
                       widget.projectModel.appStoreLink != null ||
@@ -201,10 +199,16 @@ class _ProjectCardState extends State<ProjectCard> {
                     child: Text(
                       widget.projectModel.description!,
                       maxLines: 10,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        overflow: TextOverflow.ellipsis,
-                      ),
+                      style: _isArabic(widget.projectModel.description!)
+                          ? GoogleFonts.tajawal(
+                              fontSize: 15,
+                              height: 1.3,
+                              color: Colors.black87,
+                            )
+                          : const TextStyle(
+                              fontSize: 16,
+                              overflow: TextOverflow.ellipsis,
+                            ),
                       textDirection: _isArabic(widget.projectModel.description!)
                           ? TextDirection.rtl
                           : TextDirection.ltr,

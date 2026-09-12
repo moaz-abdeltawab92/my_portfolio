@@ -8,6 +8,7 @@ class ProjectNameTitle extends StatelessWidget {
   final Color nameColor;
   final FontWeight nameWeight;
   final TextAlign textAlign;
+  final String? fontFamily;
 
   const ProjectNameTitle({
     super.key,
@@ -18,6 +19,7 @@ class ProjectNameTitle extends StatelessWidget {
     this.nameColor = Colors.black,
     this.nameWeight = FontWeight.bold,
     this.textAlign = TextAlign.center,
+    this.fontFamily,
   });
 
   @override
@@ -27,6 +29,7 @@ class ProjectNameTitle extends StatelessWidget {
         projectName,
         textAlign: textAlign,
         style: TextStyle(
+          fontFamily: fontFamily,
           fontSize: nameFontSize,
           fontWeight: nameWeight,
           color: nameColor,
@@ -41,6 +44,7 @@ class ProjectNameTitle extends StatelessWidget {
           TextSpan(
             text: projectName,
             style: TextStyle(
+              fontFamily: fontFamily,
               fontSize: nameFontSize,
               fontWeight: nameWeight,
               color: nameColor,
@@ -48,11 +52,18 @@ class ProjectNameTitle extends StatelessWidget {
           ),
           TextSpan(
             text: ' — $tagline',
-            style: GoogleFonts.cairo(
-              fontSize: taglineFontSize,
-              fontWeight: nameWeight,
-              color: nameColor,
-            ),
+            style: fontFamily != null
+                ? TextStyle(
+                    fontFamily: fontFamily,
+                    fontSize: taglineFontSize,
+                    fontWeight: nameWeight,
+                    color: nameColor,
+                  )
+                : GoogleFonts.cairo(
+                    fontSize: taglineFontSize,
+                    fontWeight: nameWeight,
+                    color: nameColor,
+                  ),
           ),
         ],
       ),

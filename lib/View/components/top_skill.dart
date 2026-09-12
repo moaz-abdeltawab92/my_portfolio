@@ -17,7 +17,7 @@ class _TopSkillsState extends State<TopSkills> {
   static const List<String> _filters = [
     'All Skills',
     'Architecture & Core',
-    'State & Backend',
+    'Backend & Storage',
     'Production & OTA',
     'Tools & Workflow',
   ];
@@ -29,28 +29,25 @@ class _TopSkillsState extends State<TopSkills> {
       icon: Icons.architecture_rounded,
       skills: [
         SkillItem(
-            name: 'Flutter & Dart',
-            subtitle: 'Responsive & Adaptive UI',
-            icon: Icons.flutter_dash,
-            isHighlight: true),
+          name: 'Flutter & Dart',
+          subtitle: 'Responsive UI',
+          icon: Icons.flutter_dash,
+        ),
         SkillItem(
-            name: 'OOP & SOLID',
-            subtitle: 'Clean Design Patterns',
-            icon: Icons.code_rounded),
+          name: 'OOP & SOLID',
+          subtitle: 'Clean Design',
+          icon: Icons.code_rounded,
+        ),
         SkillItem(
-            name: 'Clean Architecture',
-            subtitle: 'Layered & MVVM',
-            icon: Icons.layers_outlined,
-            isHighlight: true),
+          name: 'Clean Architecture',
+          subtitle: 'Layered & MVVM',
+          icon: Icons.layers_outlined,
+        ),
         SkillItem(
-            name: 'BLoC & Cubit',
-            subtitle: 'Reactive State Management',
-            icon: Icons.account_tree_outlined,
-            isHighlight: true),
-        SkillItem(
-            name: 'Provider',
-            subtitle: 'State Management',
-            icon: Icons.alt_route_rounded),
+          name: 'BLoC & Cubit',
+          subtitle: 'Reactive State',
+          icon: Icons.account_tree_outlined,
+        ),
       ],
     ),
     SkillCategory(
@@ -59,19 +56,25 @@ class _TopSkillsState extends State<TopSkills> {
       icon: Icons.cloud_done_rounded,
       skills: [
         SkillItem(
-            name: 'RESTful APIs',
-            subtitle: 'Dio / HTTP & Postman Testing',
-            icon: Icons.api_rounded,
-            isHighlight: true),
+          name: 'RESTful APIs',
+          subtitle: 'Dio / HTTP & Postman',
+          icon: Icons.api_rounded,
+        ),
         SkillItem(
-            name: 'Firebase Suite',
-            subtitle: 'Auth, Firestore & FCM Push',
-            icon: Icons.local_fire_department_rounded,
-            isHighlight: true),
+          name: 'Firebase Suite',
+          subtitle: 'Auth, Firestore & FCM',
+          icon: Icons.local_fire_department_rounded,
+        ),
         SkillItem(
-            name: 'Local Storage',
-            subtitle: 'Hive & Shared Preferences',
-            icon: Icons.sd_storage_rounded),
+          name: 'Local Storage',
+          subtitle: 'Hive & Shared Prefs',
+          icon: Icons.sd_storage_rounded,
+        ),
+        SkillItem(
+          name: 'Cloud Media',
+          subtitle: 'Cloudinary Assets',
+          icon: Icons.cloud_upload_outlined,
+        ),
       ],
     ),
     SkillCategory(
@@ -80,47 +83,52 @@ class _TopSkillsState extends State<TopSkills> {
       icon: Icons.rocket_launch_rounded,
       skills: [
         SkillItem(
-            name: 'App Store & Play Console',
-            subtitle: 'iOS & Android Release',
-            icon: Icons.shop_two_rounded,
-            isHighlight: true),
+          name: 'Play Console & App Store',
+          subtitle: 'Publishing & Release',
+          icon: Icons.shop_two_rounded,
+        ),
         SkillItem(
-            name: 'Shorebird OTA',
-            subtitle: 'Instant Code Push Updates',
-            icon: Icons.offline_bolt_rounded,
-            isHighlight: true),
+          name: 'Shorebird OTA',
+          subtitle: 'Instant Code Push',
+          icon: Icons.offline_bolt_rounded,
+        ),
         SkillItem(
-            name: 'Sentry Monitoring',
-            subtitle: 'Real-time Error Tracking',
-            icon: Icons.bug_report_rounded,
-            isHighlight: true),
+          name: 'Sentry Monitoring',
+          subtitle: 'Error & Crash Tracking',
+          icon: Icons.bug_report_rounded,
+        ),
         SkillItem(
-            name: 'Release Management',
-            subtitle: 'Production & OTA Staging',
-            icon: Icons.published_with_changes_rounded),
+          name: 'Release Management',
+          subtitle: 'Production Staging',
+          icon: Icons.published_with_changes_rounded,
+        ),
       ],
     ),
     SkillCategory(
       id: 4,
-      title: 'Engineering Tools & Workflow',
+      title: 'Engineering Tools & UX',
       icon: Icons.handyman_rounded,
       skills: [
         SkillItem(
-            name: 'Flutter DevTools',
-            subtitle: 'Performance & Profiling',
-            icon: Icons.speed_rounded),
+          name: 'Flutter DevTools',
+          subtitle: 'Profiling & Memory',
+          icon: Icons.speed_rounded,
+        ),
         SkillItem(
-            name: 'Git & GitHub',
-            subtitle: 'Version Control & Flow',
-            icon: Icons.terminal_rounded),
+          name: 'Git & GitHub',
+          subtitle: 'Version Control',
+          icon: Icons.terminal_rounded,
+        ),
         SkillItem(
-            name: 'Project Management',
-            subtitle: 'Jira, Trello & Slack',
-            icon: Icons.task_alt_rounded),
+          name: 'Project Management',
+          subtitle: 'Jira, Trello & Slack',
+          icon: Icons.task_alt_rounded,
+        ),
         SkillItem(
-            name: 'UI/UX & Animations',
-            subtitle: 'Material Design & Motion',
-            icon: Icons.auto_awesome_rounded),
+          name: 'UI/UX & Motion',
+          subtitle: 'Material Design',
+          icon: Icons.palette_rounded,
+        ),
       ],
     ),
   ];
@@ -135,13 +143,15 @@ class _TopSkillsState extends State<TopSkills> {
   @override
   Widget build(BuildContext context) {
     final isMobile = Responsive.isMobile(context);
+    final displayedCategories = _filteredCategories;
 
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: isMobile ? 16 : 40,
+        horizontal: isMobile ? 20 : 60,
       ),
       child: Column(
         children: [
+          // Section Title
           FadeInDown(
             duration: const Duration(milliseconds: 600),
             child: Column(
@@ -154,14 +164,13 @@ class _TopSkillsState extends State<TopSkills> {
                     color: textColor,
                   ),
                 ),
-                const SizedBox(height: 8),
-                Text(
-                  "Core technologies, production monitoring, architecture & engineering practices from my production experience",
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.nunito(
-                    fontSize: isMobile ? 14 : 16,
-                    color: textColor.withOpacity(0.7),
-                    fontWeight: FontWeight.w600,
+                const SizedBox(height: 6),
+                Container(
+                  width: 50,
+                  height: 4,
+                  decoration: BoxDecoration(
+                    color: primaryColor,
+                    borderRadius: BorderRadius.circular(2),
                   ),
                 ),
               ],
@@ -191,7 +200,7 @@ class _TopSkillsState extends State<TopSkills> {
                         }
                       },
                       selectedColor: primaryColor,
-                      backgroundColor: cardColor,
+                      backgroundColor: Colors.transparent,
                       labelStyle: GoogleFonts.nunito(
                         fontWeight: FontWeight.bold,
                         fontSize: 13,
@@ -199,9 +208,9 @@ class _TopSkillsState extends State<TopSkills> {
                             ? Colors.white
                             : textColor.withOpacity(0.8),
                       ),
-                      elevation: _selectedFilterIndex == index ? 4 : 1,
+                      elevation: _selectedFilterIndex == index ? 2 : 0,
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 12, vertical: 8),
+                          horizontal: 14, vertical: 8),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                         side: BorderSide(
@@ -218,19 +227,19 @@ class _TopSkillsState extends State<TopSkills> {
           ),
           const SizedBox(height: 35),
 
-          // Categories Grid
+          // Open Categories Tech Cloud Layout (No Boxed Cards)
           AnimatedSwitcher(
             duration: const Duration(milliseconds: 400),
-            child: Wrap(
+            child: Column(
               key: ValueKey<int>(_selectedFilterIndex),
-              spacing: 24,
-              runSpacing: 24,
-              alignment: WrapAlignment.center,
-              children: _filteredCategories
+              children: displayedCategories
                   .map(
-                    (category) => FadeInUp(
-                      duration: const Duration(milliseconds: 600),
-                      child: _SkillCategoryCard(category: category),
+                    (category) => Padding(
+                      padding: const EdgeInsets.only(bottom: 30),
+                      child: FadeInUp(
+                        duration: const Duration(milliseconds: 500),
+                        child: _OpenSkillCategorySection(category: category),
+                      ),
                     ),
                   )
                   .toList(),
@@ -260,99 +269,68 @@ class SkillItem {
   final String name;
   final String subtitle;
   final IconData icon;
-  final bool isHighlight;
 
   const SkillItem({
     required this.name,
     required this.subtitle,
     required this.icon,
-    this.isHighlight = false,
   });
 }
 
-class _SkillCategoryCard extends StatelessWidget {
+class _OpenSkillCategorySection extends StatelessWidget {
   final SkillCategory category;
 
-  const _SkillCategoryCard({required this.category});
+  const _OpenSkillCategorySection({required this.category});
 
   @override
   Widget build(BuildContext context) {
-    final isMobile = Responsive.isMobile(context);
-
-    return Container(
-      width: isMobile ? double.infinity : 380,
-      padding: const EdgeInsets.all(22),
-      decoration: BoxDecoration(
-        color: cardColor,
-        borderRadius: BorderRadius.circular(18),
-        boxShadow: [
-          BoxShadow(
-            color: shadoColor.withOpacity(0.2),
-            blurRadius: 15,
-            spreadRadius: 2,
-            offset: const Offset(0, 4),
-          ),
-        ],
-        border: Border.all(
-          color: primaryColor.withOpacity(0.15),
-          width: 1,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // Category Header (Unboxed, Clean Typography)
+        Row(
+          children: [
+            Icon(
+              category.icon,
+              color: primaryColor,
+              size: 22,
+            ),
+            const SizedBox(width: 10),
+            Text(
+              category.title,
+              style: GoogleFonts.poppins(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: textColor,
+              ),
+            ),
+          ],
         ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: primaryColor.withOpacity(0.12),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Icon(
-                  category.icon,
-                  color: primaryColor,
-                  size: 24,
-                ),
-              ),
-              const SizedBox(width: 14),
-              Expanded(
-                child: Text(
-                  category.title,
-                  style: GoogleFonts.poppins(
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold,
-                    color: textColor,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 18),
-          Column(
-            children: category.skills
-                .map((skill) => Padding(
-                      padding: const EdgeInsets.only(bottom: 10),
-                      child: _SkillTile(skill: skill),
-                    ))
-                .toList(),
-          ),
-        ],
-      ),
+        const SizedBox(height: 14),
+
+        // Floating Tech Chips Cloud
+        Wrap(
+          spacing: 12,
+          runSpacing: 12,
+          children: category.skills
+              .map((skill) => _FloatingTechChip(skill: skill))
+              .toList(),
+        ),
+      ],
     );
   }
 }
 
-class _SkillTile extends StatefulWidget {
+class _FloatingTechChip extends StatefulWidget {
   final SkillItem skill;
 
-  const _SkillTile({required this.skill});
+  const _FloatingTechChip({required this.skill});
 
   @override
-  State<_SkillTile> createState() => _SkillTileState();
+  State<_FloatingTechChip> createState() => _FloatingTechChipState();
 }
 
-class _SkillTileState extends State<_SkillTile> {
+class _FloatingTechChipState extends State<_FloatingTechChip> {
   bool _isHovered = false;
 
   @override
@@ -360,45 +338,45 @@ class _SkillTileState extends State<_SkillTile> {
     return MouseRegion(
       onEnter: (_) => setState(() => _isHovered = true),
       onExit: (_) => setState(() => _isHovered = false),
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-        decoration: BoxDecoration(
-          color: _isHovered
-              ? primaryColor.withOpacity(0.1)
-              : (widget.skill.isHighlight
-                  ? primaryColor.withOpacity(0.05)
-                  : secondaryColor.withOpacity(0.12)),
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(
+      child: AnimatedScale(
+        scale: _isHovered ? 1.04 : 1.0,
+        duration: const Duration(milliseconds: 180),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 180),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          decoration: BoxDecoration(
             color: _isHovered
-                ? primaryColor
-                : (widget.skill.isHighlight
-                    ? primaryColor.withOpacity(0.3)
-                    : Colors.transparent),
-            width: 1,
+                ? primaryColor.withOpacity(0.12)
+                : secondaryColor.withOpacity(0.1),
+            borderRadius: BorderRadius.circular(14),
+            border: Border.all(
+              color: _isHovered
+                  ? primaryColor
+                  : primaryColor.withOpacity(0.18),
+              width: 1,
+            ),
+            boxShadow: _isHovered
+                ? [
+                    BoxShadow(
+                      color: primaryColor.withOpacity(0.15),
+                      blurRadius: 12,
+                      offset: const Offset(0, 3),
+                    )
+                  ]
+                : [],
           ),
-        ),
-        child: Row(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(6),
-              decoration: BoxDecoration(
-                color: widget.skill.isHighlight
-                    ? primaryColor.withOpacity(0.15)
-                    : Colors.grey.withOpacity(0.1),
-                shape: BoxShape.circle,
-              ),
-              child: Icon(
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
                 widget.skill.icon,
                 size: 18,
-                color: widget.skill.isHighlight ? primaryColor : textColor,
+                color: primaryColor,
               ),
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Column(
+              const SizedBox(width: 10),
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
                     widget.skill.name,
@@ -411,34 +389,20 @@ class _SkillTileState extends State<_SkillTile> {
                   Text(
                     widget.skill.subtitle,
                     style: GoogleFonts.nunito(
-                      fontSize: 12,
+                      fontSize: 11,
                       fontWeight: FontWeight.w600,
-                      color: textColor.withOpacity(0.6),
+                      color: textColor.withOpacity(0.65),
                     ),
                   ),
                 ],
               ),
-            ),
-            if (widget.skill.isHighlight)
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                decoration: BoxDecoration(
-                  color: primaryColor,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Text(
-                  "PRO",
-                  style: GoogleFonts.nunito(
-                    fontSize: 9,
-                    fontWeight: FontWeight.w900,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
 }
+
+
 

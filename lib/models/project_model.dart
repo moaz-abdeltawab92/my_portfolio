@@ -66,7 +66,8 @@ List<ProjectModel> projects = [
 • لوحة تحكم كاملة لمتابعة كافة العمليات والطلبات لحظيًا، وإدارة بيانات النظام والمستخدمين والمندوبين والمطاعم.""",
     playStoreLink:
         "https://play.google.com/store/apps/details?id=com.moaz.khalik.makanak",
-    appStoreLink: "https://apps.apple.com/us/app/sa3a/id6806839459",
+    appStoreLink:
+        "https://apps.apple.com/us/app/%D8%AE%D9%84%D9%8A%D9%83-%D9%85%D9%83%D8%A7%D9%86%D9%83/id6810070733",
     skills: [
       'Flutter',
       'Dart',

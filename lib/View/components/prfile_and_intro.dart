@@ -35,7 +35,7 @@ class _ProfileAndIntroState extends State<ProfileAndIntro>
 
   void _launchURL() async {
     final Uri url = Uri.parse(
-        "https://drive.google.com/file/d/1jydvWSRc8eCpmVpQ3z8chvCkh7WKd50n/view?usp=drive_link");
+        "https://drive.google.com/file/d/12oFX_zLelgxOrphMoq2oCiQyDbW-b71-/view?usp=sharing");
     if (await canLaunchUrl(url)) {
       await launchUrl(url, mode: LaunchMode.externalApplication);
     } else {

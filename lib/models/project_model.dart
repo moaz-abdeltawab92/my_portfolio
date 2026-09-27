@@ -324,7 +324,7 @@ List<ProjectModel> projects = [
       'Admin Panel',
       "Responsive Design",
     ],
-    demoLink: "https://pandapos.netlify.app/",
+    demoLink: "https://panda-pos-system.vercel.app/",
     isPrivate: false,
   ),
   ProjectModel(
@@ -344,7 +344,7 @@ List<ProjectModel> projects = [
       'POS System',
       "Responsive Design",
     ],
-    demoLink: "https://pandapos.netlify.app/",
+    demoLink: "https://panda-pos-system.vercel.app/",
     isPrivate: false,
   ),
   ProjectModel(

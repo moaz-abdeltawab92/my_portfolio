@@ -26,108 +26,92 @@ class _TopSkillsState extends State<TopSkills> {
     SkillCategory(
       id: 1,
       title: 'Programming & Architecture',
-      icon: Icons.architecture_rounded,
+      accentColor: primaryColor,
       skills: [
         SkillItem(
           name: 'Flutter & Dart',
           subtitle: 'Responsive UI',
-          icon: Icons.flutter_dash,
         ),
         SkillItem(
           name: 'OOP & SOLID',
           subtitle: 'Clean Design',
-          icon: Icons.code_rounded,
         ),
         SkillItem(
           name: 'Clean Architecture',
           subtitle: 'Layered & MVVM',
-          icon: Icons.layers_outlined,
         ),
         SkillItem(
           name: 'BLoC & Cubit',
           subtitle: 'Reactive State',
-          icon: Icons.account_tree_outlined,
         ),
       ],
     ),
     SkillCategory(
       id: 2,
       title: 'Backend, APIs & Storage',
-      icon: Icons.cloud_done_rounded,
+      accentColor: Color(0xFF2563EB),
       skills: [
         SkillItem(
           name: 'RESTful APIs',
           subtitle: 'Dio / HTTP & Postman',
-          icon: Icons.api_rounded,
         ),
         SkillItem(
           name: 'Firebase Suite',
           subtitle: 'Auth, Firestore & FCM',
-          icon: Icons.local_fire_department_rounded,
         ),
         SkillItem(
           name: 'Local Storage',
           subtitle: 'Hive & Shared Prefs',
-          icon: Icons.sd_storage_rounded,
         ),
         SkillItem(
           name: 'Cloud Media',
           subtitle: 'Cloudinary Assets',
-          icon: Icons.cloud_upload_outlined,
         ),
       ],
     ),
     SkillCategory(
       id: 3,
       title: 'App Deployment & Production',
-      icon: Icons.rocket_launch_rounded,
+      accentColor: Color(0xFF10B981),
       skills: [
         SkillItem(
           name: 'Play Console & App Store',
           subtitle: 'Publishing & Release',
-          icon: Icons.shop_two_rounded,
         ),
         SkillItem(
           name: 'Shorebird OTA',
           subtitle: 'Instant Code Push',
-          icon: Icons.offline_bolt_rounded,
         ),
         SkillItem(
           name: 'Sentry Monitoring',
           subtitle: 'Error & Crash Tracking',
-          icon: Icons.bug_report_rounded,
         ),
         SkillItem(
           name: 'Release Management',
           subtitle: 'Production Staging',
-          icon: Icons.published_with_changes_rounded,
         ),
       ],
     ),
     SkillCategory(
       id: 4,
       title: 'Engineering Tools & UX',
-      icon: Icons.handyman_rounded,
+      accentColor: Color(0xFF8B5CF6),
       skills: [
         SkillItem(
           name: 'Flutter DevTools',
           subtitle: 'Profiling & Memory',
-          icon: Icons.speed_rounded,
         ),
         SkillItem(
           name: 'Git & GitHub',
           subtitle: 'Version Control',
-          icon: Icons.terminal_rounded,
         ),
         SkillItem(
           name: 'Project Management',
           subtitle: 'Jira, Trello & Slack',
-          icon: Icons.task_alt_rounded,
         ),
         SkillItem(
           name: 'UI/UX & Motion',
           subtitle: 'Material Design',
-          icon: Icons.palette_rounded,
         ),
       ],
     ),
@@ -187,40 +171,54 @@ class _TopSkillsState extends State<TopSkills> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: List.generate(
                   _filters.length,
-                  (index) => Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4),
-                    child: ChoiceChip(
-                      label: Text(_filters[index]),
-                      selected: _selectedFilterIndex == index,
-                      onSelected: (selected) {
-                        if (selected) {
+                  (index) {
+                    final isSelected = _selectedFilterIndex == index;
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 6),
+                      child: InkWell(
+                        onTap: () {
                           setState(() {
                             _selectedFilterIndex = index;
                           });
-                        }
-                      },
-                      selectedColor: primaryColor,
-                      backgroundColor: Colors.transparent,
-                      labelStyle: GoogleFonts.nunito(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 13,
-                        color: _selectedFilterIndex == index
-                            ? Colors.white
-                            : textColor.withOpacity(0.8),
-                      ),
-                      elevation: _selectedFilterIndex == index ? 2 : 0,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 14, vertical: 8),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                        side: BorderSide(
-                          color: _selectedFilterIndex == index
-                              ? primaryColor
-                              : Colors.grey.shade300,
+                        },
+                        borderRadius: BorderRadius.circular(25),
+                        child: AnimatedContainer(
+                          duration: const Duration(milliseconds: 200),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: isMobile ? 18 : 24,
+                            vertical: isMobile ? 10 : 12,
+                          ),
+                          decoration: BoxDecoration(
+                            color: isSelected ? primaryColor : cardColor,
+                            borderRadius: BorderRadius.circular(25),
+                            border: Border.all(
+                              color: isSelected
+                                  ? primaryColor
+                                  : textColor.withOpacity(0.18),
+                              width: 1.5,
+                            ),
+                            boxShadow: isSelected
+                                ? [
+                                    BoxShadow(
+                                      color: primaryColor.withOpacity(0.3),
+                                      blurRadius: 10,
+                                      offset: const Offset(0, 4),
+                                    )
+                                  ]
+                                : [],
+                          ),
+                          child: Text(
+                            _filters[index],
+                            style: GoogleFonts.nunito(
+                              fontWeight: FontWeight.w700,
+                              fontSize: isMobile ? 13 : 15,
+                              color: isSelected ? Colors.white : textColor,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
+                    );
+                  },
                 ),
               ),
             ),
@@ -254,13 +252,13 @@ class _TopSkillsState extends State<TopSkills> {
 class SkillCategory {
   final int id;
   final String title;
-  final IconData icon;
+  final Color accentColor;
   final List<SkillItem> skills;
 
   const SkillCategory({
     required this.id,
     required this.title,
-    required this.icon,
+    this.accentColor = primaryColor,
     required this.skills,
   });
 }
@@ -268,12 +266,10 @@ class SkillCategory {
 class SkillItem {
   final String name;
   final String subtitle;
-  final IconData icon;
 
   const SkillItem({
     required this.name,
     required this.subtitle,
-    required this.icon,
   });
 }
 
@@ -287,15 +283,25 @@ class _OpenSkillCategorySection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Category Header (Unboxed, Clean Typography)
+        // Category Header (Clean Glowing Dot Indicator)
         Row(
           children: [
-            Icon(
-              category.icon,
-              color: primaryColor,
-              size: 22,
+            Container(
+              width: 10,
+              height: 10,
+              decoration: BoxDecoration(
+                color: category.accentColor,
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: category.accentColor.withOpacity(0.4),
+                    blurRadius: 6,
+                    spreadRadius: 1,
+                  ),
+                ],
+              ),
             ),
-            const SizedBox(width: 10),
+            const SizedBox(width: 12),
             Text(
               category.title,
               style: GoogleFonts.poppins(
@@ -365,36 +371,26 @@ class _FloatingTechChipState extends State<_FloatingTechChip> {
                   ]
                 : [],
           ),
-          child: Row(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(
-                widget.skill.icon,
-                size: 18,
-                color: primaryColor,
+              Text(
+                widget.skill.name,
+                style: GoogleFonts.nunito(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: textColor,
+                ),
               ),
-              const SizedBox(width: 10),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    widget.skill.name,
-                    style: GoogleFonts.nunito(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      color: textColor,
-                    ),
-                  ),
-                  Text(
-                    widget.skill.subtitle,
-                    style: GoogleFonts.nunito(
-                      fontSize: 11,
-                      fontWeight: FontWeight.w600,
-                      color: textColor.withOpacity(0.65),
-                    ),
-                  ),
-                ],
+              const SizedBox(height: 2),
+              Text(
+                widget.skill.subtitle,
+                style: GoogleFonts.nunito(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w600,
+                  color: textColor.withOpacity(0.65),
+                ),
               ),
             ],
           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class PortfolioSectionKeys {
+  final GlobalKey homeKey = GlobalKey();
   final GlobalKey aboutKey = GlobalKey();
   final GlobalKey skillsKey = GlobalKey();
   final GlobalKey projectsKey = GlobalKey();

@@ -25,10 +25,11 @@ class DeveloperPortFolio extends StatelessWidget {
       backgroundColor: backgroundColor,
       appBar: AppBar(
         centerTitle: false,
+        titleSpacing: Responsive.isMobile(context) ? 16 : 40,
         title: Text(
           "Moaz Ayman",
           style: GoogleFonts.nunito(
-            fontSize: 26,
+            fontSize: 24,
             fontWeight: FontWeight.bold,
             color: textColor,
           ),
@@ -39,7 +40,7 @@ class DeveloperPortFolio extends StatelessWidget {
         actions: [
           Responsive.isMobile(context)
               ? Padding(
-                  padding: const EdgeInsets.only(right: 13),
+                  padding: const EdgeInsets.only(right: 16),
                   child: IconButton(
                     onPressed: () {
                       _globalKey.currentState!.openEndDrawer();
@@ -47,12 +48,15 @@ class DeveloperPortFolio extends StatelessWidget {
                     icon: const Icon(
                       Icons.menu,
                       color: textColor,
-                      size: 35,
+                      size: 32,
                     ),
                   ),
                 )
-              : TopBar(
-                  sectionKeys: _sectionKeys,
+              : Padding(
+                  padding: const EdgeInsets.only(right: 36),
+                  child: TopBar(
+                    sectionKeys: _sectionKeys,
+                  ),
                 ),
         ],
       ),
@@ -67,8 +71,11 @@ class DeveloperPortFolio extends StatelessWidget {
               controller: _scrollController,
               child: Column(
                 children: [
-                  const ProfileAndIntro(),
-                  SizedBox(height: Responsive.isMobile(context) ? 40 : 0),
+                  Container(
+                    key: _sectionKeys.homeKey,
+                    child: const ProfileAndIntro(),
+                  ),
+                  SizedBox(height: Responsive.isMobile(context) ? 50 : 75),
                   Container(
                     key: _sectionKeys.aboutKey,
                     child: const AboutMe(),

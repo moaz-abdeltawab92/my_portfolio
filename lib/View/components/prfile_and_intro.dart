@@ -96,34 +96,13 @@ class _ProfileAndIntroState extends State<ProfileAndIntro>
                                   width: 1,
                                 ),
                               ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Container(
-                                    width: 10,
-                                    height: 10,
-                                    decoration: const BoxDecoration(
-                                      color: Color(0xFF10B981),
-                                      shape: BoxShape.circle,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Color(0xFF10B981),
-                                          blurRadius: 6,
-                                          spreadRadius: 1,
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  const SizedBox(width: 10),
-                                  Text(
-                                    "Available for Freelance, Part-Time & Full-Time",
-                                    style: GoogleFonts.nunito(
-                                      fontSize: isMobile ? 12 : 14,
-                                      fontWeight: FontWeight.w700,
-                                      color: textColor,
-                                    ),
-                                  ),
-                                ],
+                              child: Text(
+                                "Available for Freelance, Part-Time & Full-Time",
+                                style: GoogleFonts.nunito(
+                                  fontSize: isMobile ? 12 : 14,
+                                  fontWeight: FontWeight.w700,
+                                  color: textColor,
+                                ),
                               ),
                             ),
                             Container(
@@ -139,24 +118,13 @@ class _ProfileAndIntroState extends State<ProfileAndIntro>
                                   width: 1,
                                 ),
                               ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  const Icon(
-                                    Icons.verified_user_rounded,
-                                    size: 16,
-                                    color: Color(0xFF2563EB),
-                                  ),
-                                  const SizedBox(width: 8),
-                                  Text(
-                                    "Military Status: Exempted",
-                                    style: GoogleFonts.nunito(
-                                      fontSize: isMobile ? 12 : 14,
-                                      fontWeight: FontWeight.w700,
-                                      color: textColor,
-                                    ),
-                                  ),
-                                ],
+                              child: Text(
+                                "Military Status: Exempted",
+                                style: GoogleFonts.nunito(
+                                  fontSize: isMobile ? 12 : 14,
+                                  fontWeight: FontWeight.w700,
+                                  color: textColor,
+                                ),
                               ),
                             ),
                             Container(
@@ -172,24 +140,13 @@ class _ProfileAndIntroState extends State<ProfileAndIntro>
                                   width: 1,
                                 ),
                               ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  const Icon(
-                                    Icons.school_rounded,
-                                    size: 16,
-                                    color: Color(0xFF8B5CF6),
-                                  ),
-                                  const SizedBox(width: 8),
-                                  Text(
-                                    "B.Sc. in Information Technology",
-                                    style: GoogleFonts.nunito(
-                                      fontSize: isMobile ? 12 : 14,
-                                      fontWeight: FontWeight.w700,
-                                      color: textColor,
-                                    ),
-                                  ),
-                                ],
+                              child: Text(
+                                "B.Sc. in Information Technology",
+                                style: GoogleFonts.nunito(
+                                  fontSize: isMobile ? 12 : 14,
+                                  fontWeight: FontWeight.w700,
+                                  color: textColor,
+                                ),
                               ),
                             ),
                           ],
@@ -201,7 +158,7 @@ class _ProfileAndIntroState extends State<ProfileAndIntro>
                       FadeInDown(
                         delay: const Duration(milliseconds: 300),
                         child: Text(
-                          "Hello, I'm Moaz Ayman 👋",
+                          "Hello, I'm Moaz Ayman",
                           textAlign:
                               isMobile ? TextAlign.center : TextAlign.start,
                           style: GoogleFonts.poppins(

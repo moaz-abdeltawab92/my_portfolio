@@ -187,25 +187,20 @@ class _AboutMeState extends State<AboutMe> {
             runSpacing: 10,
             children: [
               _MinimalPill(
-                icon: Icons.school_outlined,
                 label: "B.Sc. in Information Technology",
                 color: Color(0xFF8B5CF6),
               ),
               _MinimalPill(
-                icon: Icons.verified_user_outlined,
                 label: "Military: Exempted",
                 color: Color(0xFF2563EB),
               ),
               _MinimalPill(
-                icon: Icons.location_on_outlined,
                 label: "Cairo, Egypt",
               ),
               _MinimalPill(
-                icon: Icons.work_outline_rounded,
                 label: "2+ Years Exp.",
               ),
               _MinimalPill(
-                icon: Icons.language_rounded,
                 label: "Arabic & English",
               ),
             ],
@@ -232,32 +227,28 @@ class _AboutMeState extends State<AboutMe> {
           ),
           const SizedBox(height: 16),
           const _UnboxedBulletItem(
-            icon: Icons.storefront_rounded,
-            iconColor: Color(0xFF10B981),
+            color: Color(0xFF10B981),
             title: "Live Production Apps",
             description:
                 "Published & actively managing production apps on Google Play & App Store.",
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 20),
           const _UnboxedBulletItem(
-            icon: Icons.layers_outlined,
-            iconColor: primaryColor,
+            color: primaryColor,
             title: "Clean Architecture & Scalability",
             description:
                 "Decoupled, testable codebases built with BLoC/Cubit, MVVM, and SOLID principles.",
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 20),
           const _UnboxedBulletItem(
-            icon: Icons.offline_bolt_outlined,
-            iconColor: Color(0xFFF59E0B),
+            color: Color(0xFFF59E0B),
             title: "Instant OTA & Crash Tracking",
             description:
                 "Shorebird live code push patches and Sentry real-time production error monitoring.",
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 20),
           const _UnboxedBulletItem(
-            icon: Icons.groups_outlined,
-            iconColor: Color(0xFF3B82F6),
+            color: Color(0xFF3B82F6),
             title: "Agile & Team Collaboration",
             description:
                 "Collaborative workflow with Git/GitHub, Jira, Trello, and Slack.",
@@ -269,12 +260,10 @@ class _AboutMeState extends State<AboutMe> {
 }
 
 class _MinimalPill extends StatelessWidget {
-  final IconData icon;
   final String label;
   final Color? color;
 
   const _MinimalPill({
-    required this.icon,
     required this.label,
     this.color,
   });
@@ -293,38 +282,25 @@ class _MinimalPill extends StatelessWidget {
           width: 1,
         ),
       ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(
-            icon,
-            size: 15,
-            color: activeColor,
-          ),
-          const SizedBox(width: 8),
-          Text(
-            label,
-            style: GoogleFonts.nunito(
-              fontSize: 13,
-              fontWeight: FontWeight.bold,
-              color: textColor,
-            ),
-          ),
-        ],
+      child: Text(
+        label,
+        style: GoogleFonts.nunito(
+          fontSize: 13,
+          fontWeight: FontWeight.bold,
+          color: textColor,
+        ),
       ),
     );
   }
 }
 
 class _UnboxedBulletItem extends StatelessWidget {
-  final IconData icon;
-  final Color iconColor;
+  final Color color;
   final String title;
   final String description;
 
   const _UnboxedBulletItem({
-    required this.icon,
-    required this.iconColor,
+    required this.color,
     required this.title,
     required this.description,
   });
@@ -334,19 +310,25 @@ class _UnboxedBulletItem extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          padding: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            color: iconColor.withOpacity(0.12),
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Icon(
-            icon,
-            color: iconColor,
-            size: 22,
+        Padding(
+          padding: const EdgeInsets.only(top: 6),
+          child: Container(
+            width: 10,
+            height: 10,
+            decoration: BoxDecoration(
+              color: color,
+              shape: BoxShape.circle,
+              boxShadow: [
+                BoxShadow(
+                  color: color.withOpacity(0.4),
+                  blurRadius: 6,
+                  spreadRadius: 1,
+                ),
+              ],
+            ),
           ),
         ),
-        const SizedBox(width: 16),
+        const SizedBox(width: 14),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

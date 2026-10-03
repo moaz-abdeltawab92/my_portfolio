@@ -8,13 +8,13 @@ class SocialIcons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      right: 5,
+      right: 10,
       top: Responsive.isMobile(context)
           ? Responsive.heightOfScreen(context) * 0.1
           : Responsive.heightOfScreen(context) * 0.2,
       child: const SizedBox(
-        height: 250,
-        width: 50,
+        height: 290,
+        width: 60,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -24,15 +24,15 @@ class SocialIcons extends StatelessWidget {
                     'https://static.vecteezy.com/system/resources/previews/016/716/470/non_2x/linkedin-icon-free-png.png'),
             SocialIconDesign(
                 socialLink:
-                    "https://www.facebook.com/share/1XKarLmjTS/", // link to open
-                iconUrl: // icon link from google
+                    "https://www.facebook.com/share/1XKarLmjTS/",
+                iconUrl:
                     'https://cdn-icons-png.freepik.com/256/733/733547.png?ga=GA1.1.529126097.1726008930'),
             SocialIconDesign(
                 socialLink: "https://github.com/moaz-abdeltawab92",
                 iconUrl:
                     'https://cdn-icons-png.freepik.com/256/11023/11023876.png'),
             SocialIconDesign(
-                socialLink: "https://mailto:moazayman128@gmail.com",
+                socialLink: "mailto:moazayman128@gmail.com",
                 iconUrl:
                     'https://cdn-icons-png.freepik.com/512/5968/5968534.png?ga=GA1.1.529126097.1726008930'),
             SocialIconDesign(
@@ -46,9 +46,10 @@ class SocialIcons extends StatelessWidget {
   }
 }
 
-class SocialIconDesign extends StatelessWidget {
+class SocialIconDesign extends StatefulWidget {
   final String iconUrl;
   final String socialLink;
+
   const SocialIconDesign({
     super.key,
     required this.iconUrl,
@@ -56,17 +57,53 @@ class SocialIconDesign extends StatelessWidget {
   });
 
   @override
+  State<SocialIconDesign> createState() => _SocialIconDesignState();
+}
+
+class _SocialIconDesignState extends State<SocialIconDesign> {
+  bool _isHovered = false;
+
+  @override
   Widget build(BuildContext context) {
-    return FloatingActionButton.small(
-      backgroundColor: Colors.transparent,
-      onPressed: () {
-        launchUrl(
-          Uri.parse(socialLink),
-        );
-      },
-      child: Image.network(
-        iconUrl,
-        fit: BoxFit.cover,
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      child: AnimatedScale(
+        scale: _isHovered ? 1.25 : 1.0,
+        duration: const Duration(milliseconds: 200),
+        curve: Curves.easeOutCubic,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            boxShadow: _isHovered
+                ? [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.18),
+                      blurRadius: 10,
+                      spreadRadius: 2,
+                      offset: const Offset(0, 3),
+                    )
+                  ]
+                : [],
+          ),
+          child: FloatingActionButton.small(
+            elevation: _isHovered ? 6 : 0,
+            highlightElevation: 8,
+            backgroundColor: Colors.transparent,
+            onPressed: () async {
+              final Uri url = Uri.parse(widget.socialLink);
+              if (await canLaunchUrl(url)) {
+                await launchUrl(url, mode: LaunchMode.externalApplication);
+              }
+            },
+            child: Image.network(
+              widget.iconUrl,
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
       ),
     );
   }

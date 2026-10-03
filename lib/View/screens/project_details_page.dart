@@ -45,15 +45,16 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
   }
 
   String _getCleanDescription(String? rawDescription, String projectName) {
-    if (rawDescription == null || rawDescription.isEmpty) {
+    if (rawDescription == null || rawDescription.trim().isEmpty) {
       return 'No description available.';
     }
     final lines = rawDescription.trim().split('\n');
-    if (lines.isNotEmpty &&
+    if (lines.length > 1 &&
         (lines.first.contains(projectName) ||
-            lines.first.contains('—') ||
-            lines.first.contains('-'))) {
-      return lines.sublist(1).join('\n').trim();
+            lines.first.startsWith('—') ||
+            lines.first.startsWith('-'))) {
+      final cleaned = lines.sublist(1).join('\n').trim();
+      if (cleaned.isNotEmpty) return cleaned;
     }
     return rawDescription.trim();
   }

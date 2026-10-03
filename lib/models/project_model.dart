@@ -305,44 +305,40 @@ List<ProjectModel> projects = [
   ),
   ProjectModel(
     description:
-        """لوحة تحكم متكاملة لإدارة المطاعم والكافيهات ومتابعة التقارير لحظيًا.""",
+        """نظام POS سحابي متكامل للمطاعم والكافيهات يشمل تطبيق كاشير سريع ومزود بلوحة تحكم إدارية شاملة لمتابعة المبيعات والتقارير لحظياً.""",
     imgURL: 'asset/pos/panda_logo.jpg',
-    projectName: 'Panda POS Admin',
+    projectName: 'Panda POS System',
+    tagline: 'Admin & Cashier Suite',
     images: [
       'asset/pos/p1.png',
       'asset/pos/p2.png',
       'asset/pos/p3.png',
+      'asset/pos/ca1.png',
+      'asset/pos/ca2.png',
     ],
-    detailedDescription:
-        """لوحة تحكم شاملة لإدارة المطاعم والكافيهات، تمكّنك من متابعة التقارير والإحصائيات لحظيًا، إدارة المنيو والمخزون والمصروفات،مع امكانية اصدار بيانات العملاء الحاليين ومتابعة طلابتهم لحظيا مع العدد، وتحليل الأرباح بسهولة. تدعم الواجهة اللغتين العربية والإنجليزية وتوفر أدوات تحليلية متقدمة لمساعدة أصحاب الأعمال في اتخاذ قرارات دقيقة.""",
+    detailedDescription: """Panda POS System — نظام الإدارة والكاشير المتكامل للمطاعم والكافيهات
+
+نظام POS سحابي شامل ومترابط يربط عمليات الإدارة بالكاشير لحظياً لتسهيل وتنظيم إدارة المطاعم والكافيهات:
+
+1. لوحة تحكم الإدارة (Panda POS Admin):
+• متابعة التقارير والمبيعات والإحصائيات التحليلية لحظياً.
+• إدارة المنيو، المخزون، المصروفات، وقاعدة بيانات العملاء.
+• تحليل الأرباح وتنبيهات الأداء المالي لاتخاذ قرارات دقيقة.
+
+2. تطبيق الكاشير (Panda POS Cashier):
+• تسجيل الطلبات السريعة وإصدار الفواتير وطباعتها بسهولة.
+• مزامنة لحظية مع الإدارة عند كل عملية بيع مع إمكانية تقسيم الفواتير.
+• واجهة مرنة ومتعددة اللغات تعمل بسلاسة عالية.
+
+نظام كامل يدعم اللغتين العربية والإنجليزية ومبني بأحدث تقنيات Flutter السحابية.""",
     skills: [
       'Flutter',
       'Dart',
-      "Firebase",
-      "Shared Preferences",
-      "Localization Support Arabic and English",
-      'Admin Panel',
-      "Responsive Design",
-    ],
-    demoLink: "https://panda-pos-system.vercel.app/",
-    isPrivate: false,
-  ),
-  ProjectModel(
-    description:
-        """تطبيق كاشير بسيط وسريع لتنظيم عمليات البيع في المطاعم والكافيهات.""",
-    imgURL: 'asset/pos/panda_logo.jpg',
-    projectName: 'Panda POS Cashier',
-    images: ['asset/pos/ca1.png', 'asset/pos/ca2.png'],
-    detailedDescription:
-        """تطبيق كاشير ذكي وسريع مصمم لتسهيل عمليات البيع اليومية في المطاعم والكافيهات. يتيح تسجيل الطلبات، إصدار الفواتير، ومزامنة البيانات مع الإدارة لحظيًا. يتميز بواجهة بسيطة متعددة اللغات، مع ميزات مثل تقسيم الفواتير لتجربة استخدام مرنة وسلسة.""",
-    skills: [
-      'Flutter',
-      'Dart',
-      "Firebase",
-      "Shared Preferences",
-      "Localization Support Arabic and English",
-      'POS System',
-      "Responsive Design",
+      'Firebase',
+      'Shared Preferences',
+      'Localization AR/EN',
+      'Admin Panel & Cashier POS',
+      'Responsive Design',
     ],
     demoLink: "https://panda-pos-system.vercel.app/",
     isPrivate: false,

@@ -126,6 +126,14 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: const Icon(
+            Icons.arrow_back_rounded,
+            color: textColor,
+          ),
+          tooltip: 'Back to Projects',
+        ),
         title: ProjectNameTitle(
           projectName: widget.project.projectName,
           tagline: widget.project.tagline,
@@ -148,7 +156,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
                         ? MediaQuery.of(context).size.width * 0.9
                         : MediaQuery.of(context).size.width,
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     SizedBox(
                       height: Responsive.isMobile(context) ? 220 : 550,
@@ -353,82 +361,85 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
                     // Detailed Description Card
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Card(
-                        elevation: 6,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        color: cardColor,
-                        child: Padding(
-                          padding: const EdgeInsets.all(25),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ProjectNameTitle(
-                                projectName: widget.project.projectName,
-                                tagline: widget.project.tagline,
-                                fontFamily: 'Zain',
-                                nameFontSize:
-                                    Responsive.isMobile(context) ? 26 : 38,
-                                taglineFontSize:
-                                    Responsive.isMobile(context) ? 18 : 24,
-                                nameColor: textColor,
-                                textAlign: TextAlign.start,
-                              ),
-                              const SizedBox(height: 15),
-                              Text(
-                                _getCleanDescription(
-                                    widget.project.detailedDescription,
-                                    widget.project.projectName),
-                                style: TextStyle(
+                      child: SizedBox(
+                        width: double.infinity,
+                        child: Card(
+                          elevation: 6,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          color: cardColor,
+                          child: Padding(
+                            padding: const EdgeInsets.all(25),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ProjectNameTitle(
+                                  projectName: widget.project.projectName,
+                                  tagline: widget.project.tagline,
                                   fontFamily: 'Zain',
-                                  fontSize:
-                                      Responsive.isMobile(context) ? 19 : 19,
-                                  color: Colors.black87,
-                                  height: 1.5,
+                                  nameFontSize:
+                                      Responsive.isMobile(context) ? 26 : 38,
+                                  taglineFontSize:
+                                      Responsive.isMobile(context) ? 18 : 24,
+                                  nameColor: textColor,
+                                  textAlign: TextAlign.start,
                                 ),
-                                textDirection: _isArabic(
-                                        widget.project.detailedDescription ??
-                                            '')
-                                    ? TextDirection.rtl
-                                    : TextDirection.ltr,
-                              ),
-                              const SizedBox(height: 25),
-                              if (widget.project.skills != null &&
-                                  widget.project.skills!.isNotEmpty)
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Technologies Used:",
-                                      style: TextStyle(
-                                        fontFamily: 'Zain',
-                                        fontSize: Responsive.isMobile(context)
-                                            ? 20
-                                            : 24,
-                                        fontWeight: FontWeight.bold,
-                                        color: textColor,
+                                const SizedBox(height: 15),
+                                Text(
+                                  _getCleanDescription(
+                                      widget.project.detailedDescription,
+                                      widget.project.projectName),
+                                  style: TextStyle(
+                                    fontFamily: 'Zain',
+                                    fontSize:
+                                        Responsive.isMobile(context) ? 19 : 19,
+                                    color: Colors.black87,
+                                    height: 1.5,
+                                  ),
+                                  textDirection: _isArabic(
+                                          widget.project.detailedDescription ??
+                                              '')
+                                      ? TextDirection.rtl
+                                      : TextDirection.ltr,
+                                ),
+                                const SizedBox(height: 25),
+                                if (widget.project.skills != null &&
+                                    widget.project.skills!.isNotEmpty)
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Technologies Used:",
+                                        style: TextStyle(
+                                          fontFamily: 'Zain',
+                                          fontSize: Responsive.isMobile(context)
+                                              ? 20
+                                              : 24,
+                                          fontWeight: FontWeight.bold,
+                                          color: textColor,
+                                        ),
                                       ),
-                                    ),
-                                    const SizedBox(height: 12),
-                                    Wrap(
-                                      spacing: 10.0,
-                                      runSpacing: 8.0,
-                                      children: widget.project.skills!
-                                          .map((skill) => Chip(
-                                                label: Text(skill),
-                                                backgroundColor: secondaryColor
-                                                    .withOpacity(0.3),
-                                                labelStyle: GoogleFonts.nunito(
-                                                    color: textColor,
-                                                    fontWeight:
-                                                        FontWeight.w700),
-                                              ))
-                                          .toList(),
-                                    ),
-                                  ],
-                                ),
-                            ],
+                                      const SizedBox(height: 12),
+                                      Wrap(
+                                        spacing: 10.0,
+                                        runSpacing: 8.0,
+                                        children: widget.project.skills!
+                                            .map((skill) => Chip(
+                                                  label: Text(skill),
+                                                  backgroundColor: secondaryColor
+                                                      .withOpacity(0.3),
+                                                  labelStyle: GoogleFonts.nunito(
+                                                      color: textColor,
+                                                      fontWeight:
+                                                          FontWeight.w700),
+                                                ))
+                                            .toList(),
+                                      ),
+                                    ],
+                                  ),
+                              ],
+                            ),
                           ),
                         ),
                       ),

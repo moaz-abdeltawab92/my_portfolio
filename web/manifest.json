@@ -1,11 +1,11 @@
 {
-    "name": "Moaz Ayman - Flutter Developer",
+    "name": "Moaz Ayman | Flutter & Mobile Developer",
     "short_name": "Moaz Ayman",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#ECEBDE",
     "theme_color": "#AF8F6F",
-    "description": "Flutter Developer portfolio — apps published on Play Store & App Store.",
+    "description": "Flutter & Mobile Developer portfolio — apps published on Play Store & App Store.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

@@ -12,6 +12,7 @@ class ProjectModel {
   final String? appStoreLink;
   final List<String>? skills;
   final bool isPrivate;
+  final bool isGraduationProject;
   final int? downloadCount;
 
   ProjectModel({
@@ -28,6 +29,7 @@ class ProjectModel {
     this.appStoreLink,
     this.skills,
     this.isPrivate = false,
+    this.isGraduationProject = false,
     this.downloadCount,
   });
 }
@@ -274,6 +276,74 @@ List<ProjectModel> projects = [
     isPrivate: false,
   ),
   ProjectModel(
+    description: """أَثَـرْ - كل فرص التطوع في مكان واحد""",
+    imgURL: 'asset/athr/athr_logo.png',
+    projectName: 'أَثَـر',
+    images: [
+      'asset/athr/app.png',
+      'asset/athr/appp.png',
+      'asset/athr/dash.png',
+      'asset/athr/dashh.png',
+    ],
+    detailedDescription:
+        """أَثَـرْ — منصة وتطبيق التطوع وإدارة المؤسسات الخيرية (مشروع تخرج)
+
+منصة "أَثَـرْ" هي مشروع تخرج متكامل صُمم خصيصاً لحل مشكلات وتحديات التطوع والعمل الخيري في المجتمع، وتسهيل الوصول لفرص التطوع والتبرعات وتنسيق الفعاليات بين الأفراد والمؤسسات عبر منظومة رقمية ذكية وموحدة.
+
+تتكون المنصة من تطبيق موبايل للمتطوعين ولوحة تحكم (للجمعيات والأدمن):
+
+ أولاً: تطبيق للمتطوعين (Volunteer Mobile App):
+• قسم التطوع (Volunteer Services):
+  - ربط وتجهيز طالبي الخدمة والمساعدة بالمتطوعين الراغبين في تقديم المساعدة في مختلف المجالات (صحة، تعليم، مجتمع، تكنولوجيا، وغيرها).
+  - أمان ومصداقية المحتوى: تخضع كافة الفرص لمراجعة شاملة وتدقيق من قِبل الأدمن قبل ظهورها ونشرها في التطبيق.
+
+• قسم الجمعيات والمؤسسات الخيرية (NGOs Section):
+  - تجميع كافة الجمعيات والمؤسسات الخيرية الموثوقة في مكان واحد.
+  - إمكانية تصفح القوافل والأنشطة القادمة بتفاصيلها ومتطلبات المشاركة ليختار المتطوع ما يناسب مهاراته ووقت تفاعله.
+
+• قسم التبرعات والحالات الطبية الحرجة (Donations & Emergency Cases):
+  - تجميع وتوثيق الحالات الطبية الحرجة التي تتطلب مبالغ كبيرة (مثل حالات الأطفال المصابين بضمور العضلات الشوكي وغيرها).
+  - مراجعة وتدقيق المستندات والبيانات بدقة عبر الأدمن قبل النشر مع توفير طرق التبرع المباشرة والمتاحة لضمان السرعة والشفافية.
+
+ ثانياً: لوحة تحكم الجمعيات (NGO Dashboard):
+• إدارة كاملة للفعاليات والفرص: إضافة وتعديل وحذف فرص التطوع والتبرع، ومتابعة قائمة المتقدمين، وقبول أو رفض طلبات التطوع بناءً على متطلبات الحدث، وتأكيد حضور الفعالية.
+• تقارير وإحصائيات شمولية: متابعة أداء وشغل الجمعية خلال أي فترة زمنية، وعرض عدد الساعات والمكاسب والمتطوعين والأنشطة.
+• ميزة ألبومات الإنجازات (Event Albums): إضافة صور وإحصائيات وساعات العمل للقوافل المنتهية لتشجيع المجتمع على المشاركة مستقبلاً، وتظهر هذه الألبومات في بروفايل الجمعية للمستخدمين داخل التطبيق.
+• إدارة بروفايل الجمعية وحسابات الأدمن المسؤول.
+
+ ثالثاً: لوحة تحكم الأدمن الرئيسي (Super Admin Dashboard):
+• نظرة عامة شاملة على النظام ومتابعة كافة العمليات والأنشطة والفرص المتاحة في التطبيق.
+• مراجعة واعتماد فرص التطوع المقدمة وتحديد أسباب القبول أو الرفض.
+• مركز تنبيهات وإشعارات (Notifications Center): إرسال إشعارات فورية وتنبيهات لكافة مستخدمي النظام عند أي تحديث أو مستجدات.
+• إدارة التبرعات والحالات الطبية الكبرى: مراجعة كافة مستندات وتفاصيل الحالات الحرجة وإضافتها لقسم التبرعات الموثوقة.
+• مراجعة طلبات الانضمام للجمعيات الجديدة: مراجعة البيانات والأوراق الرسمية والاعتمادات قبل الموافقة على انضمام الجمعية للنظام.
+
+مشروع متكامل يهدف لترك "أَثَـر" حقيقي ومستدام في المجتمع  .""",
+    isGraduationProject: true,
+    skills: [
+      'Flutter',
+      'Dart',
+      'Clean Architecture',
+      'BLoC / Cubit',
+      'Dependency Injection (GetIt)',
+      'GoRouter',
+      'Dio Client',
+      'Dartz (Either)',
+      'Google Sign In',
+      'Firebase Messaging',
+      'Local Notifications',
+      'Role-Based Access (RBAC)',
+      'Push Notifications',
+      'JWT Authentication',
+      'Flutter Secure Storage',
+      'Flutter ScreenUtil',
+      'Lottie Animations',
+      'REST API',
+      'UI/UX Design',
+    ],
+    isPrivate: false,
+  ),
+  ProjectModel(
     description:
         """A learning platform for students and admins with AI-powered assistance and role-based dashboards.""",
     imgURL: 'asset/iti/app_icon.jpg',
@@ -316,7 +386,8 @@ List<ProjectModel> projects = [
       'asset/pos/ca1.png',
       'asset/pos/ca2.png',
     ],
-    detailedDescription: """Panda POS System — نظام الإدارة والكاشير المتكامل للمطاعم والكافيهات
+    detailedDescription:
+        """Panda POS System — نظام الإدارة والكاشير المتكامل للمطاعم والكافيهات
 
 نظام POS سحابي شامل ومترابط يربط عمليات الإدارة بالكاشير لحظياً لتسهيل وتنظيم إدارة المطاعم والكافيهات:
 
@@ -371,29 +442,6 @@ List<ProjectModel> projects = [
       'Android Architecture Components'
     ],
     isPrivate: true,
-  ),
-  ProjectModel(
-    description:
-        """A medical app to help users find doctors by specialization and location easily.""",
-    imgURL: 'asset/doctor/docicon.png',
-    projectName: 'Doctor Hunt App',
-    images: [
-      'asset/doctor/doc.png',
-      'asset/doctor/doc22.png',
-    ],
-    detailedDescription:
-        """Doctor Hunt is a Flutter app that allows users to search and connect with doctors based on specialization and location. It provides detailed profiles, contact information, and real-time availability. The app focuses on simplicity, secure data handling, and efficient search functionality for an optimal user experience.""",
-    githubLink: "https://github.com/moaz-abdeltawab92/Doctor-Hunt-App",
-    skills: [
-      'Flutter',
-      'Dart',
-      "Authentication",
-      "Cubit",
-      "Local Storage",
-      "Clean Architecture",
-      "Dependency Injection",
-    ],
-    isPrivate: false,
   ),
 ];
 

@@ -204,30 +204,59 @@ class _ProjectCardState extends State<ProjectCard> {
                       // Top Badges Overlay
                       Positioned(
                         top: 10,
+                        left: 10,
                         right: 10,
                         child: Wrap(
-                          spacing: 6,
+                          spacing: 5,
+                          runSpacing: 5,
+                          alignment: WrapAlignment.end,
+                          crossAxisAlignment: WrapCrossAlignment.center,
                           children: [
+                            if (widget.projectModel.isGraduationProject)
+                              const _CardBadge(
+                                label: 'مشروع تخرج',
+                                color: Color(0xFFD97706),
+                              ),
                             if (widget.projectModel.downloadCount != null)
                               _CardBadge(
                                 label:
                                     '${widget.projectModel.downloadCount}+ Downloads',
-                                color: const Color(0xFF10B981),
+                                color: const Color(0xFF059669),
+                                icon: const Icon(
+                                  Icons.file_download_outlined,
+                                  color: Colors.white,
+                                  size: 13,
+                                ),
                               ),
                             if (widget.projectModel.playStoreLink != null)
                               const _CardBadge(
                                 label: 'Google Play',
-                                color: Color(0xFF2563EB),
+                                color: Color(0xFF0F172A),
+                                icon: Icon(
+                                  Icons.play_arrow_rounded,
+                                  color: Color(0xFF34D399),
+                                  size: 14,
+                                ),
                               ),
                             if (widget.projectModel.appStoreLink != null)
                               const _CardBadge(
                                 label: 'App Store',
-                                color: Color(0xFF8B5CF6),
+                                color: Color(0xFF0F172A),
+                                icon: Icon(
+                                  Icons.apple,
+                                  color: Colors.white,
+                                  size: 13,
+                                ),
                               ),
                             if (widget.projectModel.isPrivate)
                               const _CardBadge(
                                 label: 'Private Repo',
-                                color: Color(0xFFEF4444),
+                                color: Color(0xFFDC2626),
+                                icon: Icon(
+                                  Icons.lock_outline_rounded,
+                                  color: Colors.white,
+                                  size: 12,
+                                ),
                               ),
                           ],
                         ),
@@ -389,34 +418,57 @@ class _ProjectCardState extends State<ProjectCard> {
 class _CardBadge extends StatelessWidget {
   final String label;
   final Color color;
+  final Widget? icon;
 
   const _CardBadge({
     required this.label,
     required this.color,
+    this.icon,
   });
 
   @override
   Widget build(BuildContext context) {
+    final isArabic = RegExp(r'[\u0600-\u06FF]').hasMatch(label);
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.9),
-        borderRadius: BorderRadius.circular(12),
+        color: color.withOpacity(0.95),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: Colors.white.withOpacity(0.2),
+          width: 0.8,
+        ),
         boxShadow: [
           BoxShadow(
-            color: color.withOpacity(0.3),
+            color: Colors.black.withOpacity(0.25),
             blurRadius: 6,
             offset: const Offset(0, 2),
           ),
         ],
       ),
-      child: Text(
-        label,
-        style: GoogleFonts.nunito(
-          fontSize: 10.5,
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
-        ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          if (icon != null) ...[
+            icon!,
+            const SizedBox(width: 3.5),
+          ],
+          Text(
+            label,
+            style: isArabic
+                ? GoogleFonts.cairo(
+                    fontSize: 10.5,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  )
+                : GoogleFonts.poppins(
+                    fontSize: 10.5,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
+                  ),
+          ),
+        ],
       ),
     );
   }

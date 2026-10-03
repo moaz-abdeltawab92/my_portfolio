@@ -62,6 +62,7 @@ flutter:
     - asset/takka/
     - asset/routiner/
     - asset/doctor/
+    - asset/athr/
     - asset/pos/
     - asset/tazkira/
     - asset/halak/

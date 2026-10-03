@@ -254,6 +254,20 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
                         alignment: WrapAlignment.center,
                         crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
+                          if (widget.project.isGraduationProject)
+                            Chip(
+                              label: Text(
+                                'مشروع تخرج',
+                                style: GoogleFonts.cairo(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14,
+                                ),
+                              ),
+                              backgroundColor: const Color(0xFFD97706),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 12, vertical: 8),
+                            ),
                           if (widget.project.isPrivate)
                             Chip(
                               label: Text(
@@ -369,77 +383,107 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
                             borderRadius: BorderRadius.circular(15),
                           ),
                           color: cardColor,
-                          child: Padding(
-                            padding: const EdgeInsets.all(25),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                ProjectNameTitle(
-                                  projectName: widget.project.projectName,
-                                  tagline: widget.project.tagline,
-                                  fontFamily: 'Zain',
-                                  nameFontSize:
-                                      Responsive.isMobile(context) ? 26 : 38,
-                                  taglineFontSize:
-                                      Responsive.isMobile(context) ? 18 : 24,
-                                  nameColor: textColor,
-                                  textAlign: TextAlign.start,
-                                ),
-                                const SizedBox(height: 15),
-                                Text(
-                                  _getCleanDescription(
-                                      widget.project.detailedDescription,
-                                      widget.project.projectName),
-                                  style: TextStyle(
-                                    fontFamily: 'Zain',
-                                    fontSize:
-                                        Responsive.isMobile(context) ? 19 : 19,
-                                    color: Colors.black87,
-                                    height: 1.5,
-                                  ),
-                                  textDirection: _isArabic(
-                                          widget.project.detailedDescription ??
-                                              '')
-                                      ? TextDirection.rtl
-                                      : TextDirection.ltr,
-                                ),
-                                const SizedBox(height: 25),
-                                if (widget.project.skills != null &&
-                                    widget.project.skills!.isNotEmpty)
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                          child: Builder(
+                            builder: (context) {
+                              final isArabic = _isArabic(
+                                  widget.project.detailedDescription ?? '');
+                              return Directionality(
+                                textDirection: isArabic
+                                    ? TextDirection.rtl
+                                    : TextDirection.ltr,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(25),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        "Technologies Used:",
-                                        style: TextStyle(
-                                          fontFamily: 'Zain',
-                                          fontSize: Responsive.isMobile(context)
-                                              ? 20
-                                              : 24,
-                                          fontWeight: FontWeight.bold,
-                                          color: textColor,
+                                      ProjectNameTitle(
+                                        projectName:
+                                            widget.project.projectName,
+                                        tagline: widget.project.tagline,
+                                        fontFamily: isArabic ? 'Zain' : null,
+                                        nameFontSize: Responsive.isMobile(
+                                                context)
+                                            ? 26
+                                            : 38,
+                                        taglineFontSize: Responsive.isMobile(
+                                                context)
+                                            ? 18
+                                            : 24,
+                                        nameColor: textColor,
+                                        textAlign: TextAlign.start,
+                                      ),
+                                      const SizedBox(height: 15),
+                                      SizedBox(
+                                        width: double.infinity,
+                                        child: Text(
+                                          _getCleanDescription(
+                                              widget
+                                                  .project.detailedDescription,
+                                              widget.project.projectName),
+                                          style: TextStyle(
+                                            fontFamily:
+                                                isArabic ? 'Zain' : null,
+                                            fontSize:
+                                                Responsive.isMobile(context)
+                                                    ? 19
+                                                    : 19,
+                                            color: Colors.black87,
+                                            height: 1.5,
+                                          ),
+                                          textAlign: TextAlign.start,
                                         ),
                                       ),
-                                      const SizedBox(height: 12),
-                                      Wrap(
-                                        spacing: 10.0,
-                                        runSpacing: 8.0,
-                                        children: widget.project.skills!
-                                            .map((skill) => Chip(
-                                                  label: Text(skill),
-                                                  backgroundColor: secondaryColor
-                                                      .withOpacity(0.3),
-                                                  labelStyle: GoogleFonts.nunito(
-                                                      color: textColor,
-                                                      fontWeight:
-                                                          FontWeight.w700),
-                                                ))
-                                            .toList(),
-                                      ),
+                                      const SizedBox(height: 25),
+                                      if (widget.project.skills != null &&
+                                          widget.project.skills!.isNotEmpty)
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              isArabic
+                                                  ? "التقنيات المستخدمة:"
+                                                  : "Technologies Used:",
+                                              style: TextStyle(
+                                                fontFamily:
+                                                    isArabic ? 'Zain' : null,
+                                                fontSize: Responsive.isMobile(
+                                                        context)
+                                                    ? 20
+                                                    : 24,
+                                                fontWeight: FontWeight.bold,
+                                                color: textColor,
+                                              ),
+                                            ),
+                                            const SizedBox(height: 12),
+                                            Wrap(
+                                              spacing: 10.0,
+                                              runSpacing: 8.0,
+                                              children: widget.project.skills!
+                                                  .map((skill) => Chip(
+                                                        label: Text(skill),
+                                                        backgroundColor:
+                                                            secondaryColor
+                                                                .withOpacity(
+                                                                    0.3),
+                                                        labelStyle: GoogleFonts
+                                                            .nunito(
+                                                                color:
+                                                                    textColor,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w700),
+                                                      ))
+                                                  .toList(),
+                                            ),
+                                          ],
+                                        ),
                                     ],
                                   ),
-                              ],
-                            ),
+                                ),
+                              );
+                            },
                           ),
                         ),
                       ),
